@@ -2,6 +2,11 @@
   "name": "@charrue/schema-form-next",
   "version": "0.1.0",
   "description": "基于vue3与element-plus的表单组件封装",
+  "keywords": [
+    "charrue",
+    "element-plus",
+    "form"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/charrue/charrue-schema-form",
@@ -9,8 +14,12 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "unpkg": "dist/index.min.js",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "vue3-bundler"
   },
@@ -25,5 +34,8 @@
   "peerDependencies": {
     "element-plus": "*",
     "vue": "3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
