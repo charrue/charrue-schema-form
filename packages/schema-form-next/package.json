@@ -16,12 +16,14 @@
   "main": "dist/index.js",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
   "files": [
     "dist",
     "README.md"
   ],
   "scripts": {
-    "build": "vue3-bundler"
+    "build": "vue3-bundler",
+    "build:types": "rm -rf ./typings && vue-tsc --declaration --emitDeclarationOnly"
   },
   "devDependencies": {
     "@charrue/vue3-bundler": "^0.0.6",

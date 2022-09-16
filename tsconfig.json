@@ -15,6 +15,5 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
   },
-  "include": ["packages/**/*.ts"],
   "exclude": ["node_modules"],
 }

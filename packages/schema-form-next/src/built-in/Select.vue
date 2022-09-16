@@ -30,7 +30,7 @@ const enums = useEnums(computed(() => props.schema.enums));
 const emits = defineEmits(["update:model-value"]);
 
 const attrs = useAttrs();
-const uiProps = computed(() => {
+const uiProps = computed<Record<string, any>>(() => {
   const { schema } = props;
   if (!schema) return {};
   const { "remote-method": originRemoteMethod, ...rest } = attrs || {};

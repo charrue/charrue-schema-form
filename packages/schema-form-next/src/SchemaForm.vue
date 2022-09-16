@@ -3,7 +3,7 @@
 import { computed, reactive, ref, useSlots, watch } from "vue";
 import SchemaField from "./SchemaField.vue";
 import isEqual from "lodash.isequal";
-import type { FormItemRule } from "element-plus";
+import type { FormItemRule } from "./types";
 import { FormSchemaDef } from "./types";
 
 type SchemaFormData = Record<string, any>;
