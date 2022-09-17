@@ -12,6 +12,7 @@ importers:
       eslint-config-prettier: ^8.5.0
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-vue: ^7.17.0
+      prettier: ^2.7.1
       typescript: ^4.8.3
       vue-tsc: 0.40.13
     devDependencies:
@@ -21,8 +22,9 @@ importers:
       '@typescript-eslint/parser': 5.37.0_eslint@7.32.0+typescript@4.8.3
       eslint: 7.32.0
       eslint-config-prettier: 8.5.0_eslint@7.32.0
-      eslint-plugin-prettier: 4.2.1_c08a005651ad187e8de278ea473cd361
+      eslint-plugin-prettier: 4.2.1_f9a5537566b3ca3b5b68fc99385c0ca6
       eslint-plugin-vue: 7.20.0_eslint@7.32.0
+      prettier: 2.7.1
       typescript: 4.8.3
       vue-tsc: 0.40.13_typescript@4.8.3
 
@@ -47,18 +49,10 @@ importers:
 
   packages/schema-form-next:
     specifiers:
-      '@charrue/vue3-bundler': ^0.0.6
-      '@types/lodash.debounce': ^4.0.7
-      '@types/lodash.isequal': ^4.5.6
-      lodash.debounce: ^4.0.8
-      lodash.isequal: ^4.5.0
+      '@charrue/vue3-bundler': ^0.1.0
       vue: 3.2.25
     devDependencies:
-      '@charrue/vue3-bundler': 0.0.6_vue@3.2.25
-      '@types/lodash.debounce': 4.0.7
-      '@types/lodash.isequal': 4.5.6
-      lodash.debounce: 4.0.8
-      lodash.isequal: 4.5.0
+      '@charrue/vue3-bundler': 0.1.0_vue@3.2.25
       vue: 3.2.25
 
 packages:
@@ -403,8 +397,8 @@ packages:
       kolorist: 1.6.0
     dev: true
 
-  /@charrue/vue3-bundler/0.0.6_vue@3.2.25:
-    resolution: {integrity: sha512-PZ0tzDK65xRVeQLCzJjnO7SIkx+FArnRR5JnrOBu5SesiELMjM0VxCIc43xBGmGliMACWswWhPOGNUyHYXadiw==}
+  /@charrue/vue3-bundler/0.1.0_vue@3.2.25:
+    resolution: {integrity: sha512-DvgLcgvRB8w1Kt7DsvHaTTerHTlCspn4s9dTCCi6gmPZc6ZTnz58wCuSSCXjIVRplo2Bcz39jwzNZqlKKhUxBA==}
     hasBin: true
     peerDependencies:
       vue: ^3.2.25
@@ -422,7 +416,6 @@ packages:
       rollup: 2.79.0
       rollup-plugin-esbuild: 4.10.1_esbuild@0.14.54+rollup@2.79.0
       typescript: 4.8.3
-      unplugin-vue-define-options: 0.6.2_a19d376cfe1b6fa4e0cfb9b5c872ed8d
       vite: 2.9.15
       vue: 3.2.25
     transitivePeerDependencies:
@@ -431,7 +424,6 @@ packages:
       - stylus
       - supports-color
       - tslib
-      - webpack
     dev: true
 
   /@ctrl/tinycolor/3.4.1:
@@ -656,20 +648,9 @@ packages:
       '@types/lodash': 4.14.185
     dev: false
 
-  /@types/lodash.debounce/4.0.7:
-    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
-    dependencies:
-      '@types/lodash': 4.14.185
-    dev: true
-
-  /@types/lodash.isequal/4.5.6:
-    resolution: {integrity: sha512-Ww4UGSe3DmtvLLJm2F16hDwEQSv7U0Rr8SujLUA2wHI2D2dm8kPu6Et+/y303LfjTIwSBKXB/YTUcAKpem/XEg==}
-    dependencies:
-      '@types/lodash': 4.14.185
-    dev: true
-
   /@types/lodash/4.14.185:
     resolution: {integrity: sha512-evMDG1bC4rgQg4ku9tKpuMh5iBNEwNa3tf9zRHdP1qlv+1WUg44xat4IxCE14gIpZRGUUWAx2VhItCZc25NfMA==}
+    dev: false
 
   /@types/node/18.7.18:
     resolution: {integrity: sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==}
@@ -1115,12 +1096,6 @@ packages:
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  /acorn/8.8.0:
-    resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -1647,7 +1622,7 @@ packages:
       eslint: 7.32.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_c08a005651ad187e8de278ea473cd361:
+  /eslint-plugin-prettier/4.2.1_f9a5537566b3ca3b5b68fc99385c0ca6:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -1660,6 +1635,7 @@ packages:
     dependencies:
       eslint: 7.32.0
       eslint-config-prettier: 8.5.0_eslint@7.32.0
+      prettier: 2.7.1
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -2146,14 +2122,6 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
-  /lodash.debounce/4.0.8:
-    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-    dev: true
-
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: true
-
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -2296,6 +2264,12 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       fast-diff: 1.2.0
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /progress/2.0.3:
@@ -2566,49 +2540,6 @@ packages:
     hasBin: true
     dev: true
 
-  /unplugin-vue-define-options/0.6.2_a19d376cfe1b6fa4e0cfb9b5c872ed8d:
-    resolution: {integrity: sha512-0YAbugPnN57ZkUM0fygfp43Vm321vOUYy2s81O09SfCM08mSul4vMxOZxLj9VSa3NVPF/IN0FmGyTMB5exOdyQ==}
-    engines: {node: '>=14.19.0'}
-    peerDependencies:
-      vue: ^3.2.25
-    dependencies:
-      '@rollup/pluginutils': 4.2.1
-      '@vue/compiler-sfc': 3.2.39
-      unplugin: 0.7.2_50b1b463c2ececc6b8b2d2513861660d
-      vue: 3.2.25
-    transitivePeerDependencies:
-      - esbuild
-      - rollup
-      - vite
-      - webpack
-    dev: true
-
-  /unplugin/0.7.2_50b1b463c2ececc6b8b2d2513861660d:
-    resolution: {integrity: sha512-m7thX4jP8l5sETpLdUASoDOGOcHaOVtgNyrYlToyQUvILUtEzEnngRBrHnAX3IKqooJVmXpoa/CwQ/QqzvGaHQ==}
-    peerDependencies:
-      esbuild: '>=0.13'
-      rollup: ^2.50.0
-      vite: ^2.3.0 || ^3.0.0-0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      acorn: 8.8.0
-      chokidar: 3.5.3
-      esbuild: 0.14.54
-      rollup: 2.79.0
-      vite: 2.9.15
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.4
-    dev: true
-
   /update-browserslist-db/1.0.9_browserslist@4.21.3:
     resolution: {integrity: sha512-/xsqn21EGVdXI3EXSum1Yckj3ZVZugqyOZQ/CxYPBD/R+ko9NSUScf8tFF4dOKY+2pvSSJA/S+5B8s4Zr4kyvg==}
     hasBin: true
@@ -2751,15 +2682,6 @@ packages:
       '@vue/server-renderer': 3.2.39_vue@3.2.39
       '@vue/shared': 3.2.39
     dev: false
-
-  /webpack-sources/3.2.3:
-    resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
-    engines: {node: '>=10.13.0'}
-    dev: true
-
-  /webpack-virtual-modules/0.4.4:
-    resolution: {integrity: sha512-h9atBP/bsZohWpHnr+2sic8Iecb60GxftXsWNLLLSqewgIsGzByd2gcIID4nXcG+3tNe4GQG3dLcff3kXupdRA==}
-    dev: true
 
   /which/2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
