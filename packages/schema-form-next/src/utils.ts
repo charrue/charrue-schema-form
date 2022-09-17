@@ -40,16 +40,6 @@ export const isEqual = (a: unknown, b: unknown) => {
       return true;
     }
 
-    if (a instanceof Buffer && b instanceof Buffer ) {
-      const length = a.length;
-      if (length != b.length) return false;
-      for (let i = 0; i < length; i++) {
-        if (a[i] !== b[i]) return false;
-      }
-      return true;
-    }
-
-
     if (a instanceof RegExp && b instanceof RegExp) return a.source === b.source && a.flags === b.flags;
 
     if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
