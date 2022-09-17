@@ -7,6 +7,7 @@ module.exports = {
   },
   globals: {
     defineProps: "readonly",
+    defineOptions: "readonly",
     defineEmits: "readonly",
     defineExpose: "readonly",
     withDefaults: "readonly",

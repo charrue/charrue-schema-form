@@ -18,7 +18,6 @@
 </template>
 <script lang="ts" setup>
 import { computed, useAttrs } from "vue";
-import debounce from "lodash.debounce";
 import { FormSchemaDef } from "../types";
 import { useEnums } from "./useEnums";
 const props = defineProps<{
@@ -40,13 +39,13 @@ const uiProps = computed<Record<string, any>>(() => {
     ...(rest || {}),
     "remote-method": !originRemoteMethod
       ? undefined
-      : debounce(async (query: string) => {
+      : async (query: string) => {
           // eslint-disable-next-line @typescript-eslint/ban-types
           const list = await (originRemoteMethod as Function)(query);
           if (Array.isArray(list)) {
             enums.value = list;
           }
-        }, 150),
+        },
   };
 });
 

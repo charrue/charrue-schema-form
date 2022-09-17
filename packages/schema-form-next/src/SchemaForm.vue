@@ -1,8 +1,7 @@
-<!-- eslint-disable no-prototype-builtins -->
 <script setup lang="ts">
-import { computed, reactive, ref, useSlots, watch } from "vue";
+import { computed, reactive, ref, useSlots, watch, getCurrentInstance } from "vue";
 import SchemaField from "./SchemaField.vue";
-import isEqual from "lodash.isequal";
+import { isEqual } from "./utils";
 import type { FormItemRule } from "./types";
 import { FormSchemaDef } from "./types";
 
@@ -16,7 +15,14 @@ const props = defineProps<{
   disabled?: boolean;
 }>();
 
+defineOptions({
+  name: "CharrueSchemaForm",
+});
+
 const emits = defineEmits(["update:modelValue"]);
+
+
+console.log(getCurrentInstance())
 
 const slots = useSlots();
 const fieldSlots = reactive<Record<string, { name: string }[]>>({});

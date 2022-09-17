@@ -1,6 +1,5 @@
 import type { FormSchemaDef, CreateSchemaTemplate } from "./types";
 
-
 export const createDateRangeSchema: CreateSchemaTemplate = (prop, label, config = {}) => {
   const { "ui-props": uiProps, ...others } = config;
 

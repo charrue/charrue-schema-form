@@ -1,8 +1,13 @@
 import SchemaForm from "./SchemaForm.vue";
 
+const INSTALL_KEY = "CharrueSchemaFormNext";
+
 const SchemaFormPlugin = {
-  install(Vue: any) {
-    Vue.component("charrue-schema-form", SchemaForm);
+  install(app: any) {
+    if (app[INSTALL_KEY]) return;
+
+    app[INSTALL_KEY] = true;
+    app.component("charrue-schema-form", SchemaForm);
   },
 }
 

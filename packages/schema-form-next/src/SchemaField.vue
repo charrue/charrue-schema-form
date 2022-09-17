@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, useSlots } from "vue";
 import type { FormSchemaDef } from "./types";
-import isEqual from "lodash.isequal";
+import { isEqual } from "./utils";
 import builtInWidgets from "./built-in/widgets";
 const props = defineProps<{
   schema: FormSchemaDef;
@@ -10,6 +10,9 @@ const props = defineProps<{
   disabled: boolean;
 }>();
 
+defineOptions({
+  name: "CharrueSchemaField",
+});
 const emits = defineEmits(["input"]);
 const slots = useSlots();
 const slotNames = computed(() => {
