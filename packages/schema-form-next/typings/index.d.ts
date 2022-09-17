@@ -1,5 +1,5 @@
 declare const SchemaFormPlugin: {
-    install(Vue: any): void;
+    install(app: any): void;
 };
 export * from "./helper";
 export * from "./types";
