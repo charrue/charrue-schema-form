@@ -21,9 +21,6 @@ defineOptions({
 
 const emits = defineEmits(["update:modelValue"]);
 
-
-console.log(getCurrentInstance())
-
 const slots = useSlots();
 const fieldSlots = reactive<Record<string, { name: string }[]>>({});
 const formItemSlots = reactive<Record<string, { name: string }[]>>({});
