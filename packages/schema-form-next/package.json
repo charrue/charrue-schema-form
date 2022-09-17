@@ -1,6 +1,6 @@
 {
   "name": "@charrue/schema-form-next",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "基于vue3与element-plus的表单组件封装",
   "keywords": [
     "charrue",
@@ -23,7 +23,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "vue3-bundler",
+    "build": "npm run build:component && npm run build:types",
+    "build:component": "vue3-bundler",
     "build:types": "rm -rf ./typings && vue-tsc --declaration --emitDeclarationOnly"
   },
   "devDependencies": {
