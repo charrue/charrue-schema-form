@@ -1,19 +1,5 @@
 module.exports = {
-  parserOptions: {
-    parser: "@typescript-eslint/parser",
-    ecmaVersion: 2020,
-    sourceType: "module",
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  extends: [
-    "@charrue/base",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-  ],
-
+  extends: ["@charrue/typescript", "prettier", "plugin:prettier/recommended"],
   rules: {
     camelcase: "off",
     "no-magic-numbers": "off",

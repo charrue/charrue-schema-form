@@ -1,35 +1,33 @@
-import type { FormSchemaDef, CreateSchemaTemplate } from "./types";
+import type { CharrueSelectFieldProps } from "./built-in/Select";
+import type {
+  CreateSchemaTemplateType,
+  ListOptionItem,
+  DefaultListOptionValue,
+  DefaultFormSchemaExcludeKey,
+} from "./types/public";
+import type {
+  CharrueCheckboxFieldProps,
+  CheckboxOptionItem,
+} from "./built-in/Checkbox";
+import type {
+  CharrueRadioFieldProps,
+  RadioListOptionItem,
+} from "./built-in/Radio";
+import type { CharrueInputFieldProps } from "./built-in/Input";
+import type { CharrueInputNumberFieldProps } from "./built-in/InputNumber";
 
-export const createDateRangeSchema: CreateSchemaTemplate = (prop, label, config = {}) => {
-  const { "ui-props": uiProps, ...others } = config;
-
-  return {
-    ...(others || {}),
-    title: label,
-    prop,
-    type: "array",
-    "ui-widget": "el-date-picker",
-    "ui-props": {
-      type: "daterange",
-      "range-separator": "-",
-      "start-placeholder": "开始日期",
-      "end-placeholder": "结束日期",
-      "value-format": "YYYY-MM-DD",
-      ...(uiProps || {}),
-    },
-  };
-};
-
-export const createSelectSchema: CreateSchemaTemplate = (prop, label, config = {}) => {
-  const { "ui-props": uiProps, ...others } = config;
+export const createSelectSchema: CreateSchemaTemplateType<
+  CharrueSelectFieldProps
+> = (prop, label, config = {}) => {
+  const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
-    ...(others || {}),
+    ...(config || {}),
     title: label,
     prop,
-    type: "string",
-    "ui-widget": "select",
-    "ui-props": {
+    type: uiProps.multiple ? "array" : "string",
+    uiWidget: "select",
+    uiProps: {
       clearable: true,
       filterable: true,
       placeholder: `请选择${label}`,
@@ -38,49 +36,99 @@ export const createSelectSchema: CreateSchemaTemplate = (prop, label, config = {
   };
 };
 
-
-export const createInputSchema: CreateSchemaTemplate = (prop, label, config = {}) => {
-  const { "ui-props": uiProps, ...others } = config;
+export const createCheckboxSchema: CreateSchemaTemplateType<
+  CharrueCheckboxFieldProps,
+  CheckboxOptionItem
+> = (prop, label, config = {}) => {
+  const uiProps: CharrueCheckboxFieldProps = config["ui-props"] ||
+    config.uiProps || {
+      isButton: false,
+      checkbox: {},
+      checkboxGroup: {},
+    };
 
   return {
-    ...(others || {}),
+    ...(config || {}),
     title: label,
     prop,
     type: "string",
-    "ui-props": {
+    uiWidget: "checkbox",
+    uiProps,
+  };
+};
+
+export const createRadioSchema: CreateSchemaTemplateType<
+  CharrueRadioFieldProps,
+  RadioListOptionItem
+> = (prop, label, config = {}) => {
+  const uiProps: CharrueRadioFieldProps = config["ui-props"] ||
+    config.uiProps || {
+      isButton: false,
+      radio: {},
+      radioGroup: {},
+    };
+
+  return {
+    ...(config || {}),
+    title: label,
+    prop,
+    type: "string",
+    uiWidget: "radio",
+    uiProps,
+  };
+};
+
+export const createInputSchema: CreateSchemaTemplateType<
+  CharrueInputFieldProps,
+  ListOptionItem<DefaultListOptionValue>,
+  DefaultFormSchemaExcludeKey | "enums"
+> = (prop, label, config = {}) => {
+  const uiProps = config["ui-props"] || config.uiProps || {};
+
+  return {
+    ...(config || {}),
+    title: label,
+    prop,
+    type: "string",
+    uiProps: {
       clearable: true,
-      placeholder: `请选择${label}`,
-      ...(uiProps || {}),
+      placeholder: `请输入${label}`,
+      ...uiProps,
     },
   };
 };
 
-export const createRadioSchema: CreateSchemaTemplate = (prop, label, config = {}) => {
-  const { "ui-props": uiProps, ...others } = config;
+export const createInputNumberSchema: CreateSchemaTemplateType<
+  CharrueInputNumberFieldProps,
+  ListOptionItem<DefaultListOptionValue>,
+  DefaultFormSchemaExcludeKey | "enums"
+> = (prop, label, config = {}) => {
+  const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
-    ...(others || {}),
+    ...(config || {}),
     title: label,
     prop,
-    type: "string",
-    "ui-widget": "radio",
-    "ui-props": {
-      ...(uiProps || {}),
+    type: "number",
+    uiProps: {
+      clearable: true,
+      placeholder: `请输入${label}`,
+      ...uiProps,
     },
   };
 };
 
-/**
- * @example
- * createSchemaPipeline(
- *  createInputSchema("name", "Name"),
- *  createDateRangeSchema("dateRange", "Date"),
- * )
- */
-export const createSchemaPipeline = (...rest: FormSchemaDef[]) => {
-  return Array.from(rest).reduce((prev, next) => {
-    const schemaProp = next.prop;
-    prev[schemaProp] = next;
-    return prev;
-  }, {} as Record<string, FormSchemaDef>)
-}
+// /**
+//  * @example
+//  * createSchemaPipeline(
+//  *  createInputSchema("name", "Name"),
+//  *  createDateRangeSchema("dateRange", "Date"),
+//  * )
+//  */
+// export const createSchemaPipeline = (...rest: FormSchemaDef[]) => {
+//   return Array.from(rest).reduce((prev, next) => {
+//     const schemaProp = next.prop;
+//     prev[schemaProp] = next;
+//     return prev;
+//   }, {} as Record<string, FormSchemaDef>);
+// };

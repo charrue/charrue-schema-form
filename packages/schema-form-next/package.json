@@ -13,22 +13,28 @@
     "directory": "packages/schema-form-next"
   },
   "license": "MIT",
-  "main": "dist/index.js",
-  "unpkg": "dist/index.min.js",
+  "main": "dist/index.mjs",
+  "unpkg": "dist/index.mjs",
   "module": "dist/index.mjs",
-  "typings": "typings/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "typings",
     "README.md"
   ],
   "scripts": {
-    "build": "npm run build:component && npm run build:types",
-    "build:component": "vue3-bundler",
-    "build:types": "rm -rf ./typings && vue-tsc --declaration --emitDeclarationOnly"
+    "build": "unbuild",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "element-plus": "^2.2.18",
+    "vue": "^3.2.41"
   },
   "devDependencies": {
     "@charrue/vue3-bundler": "^0.1.0",
+    "@types/lodash.isequal": "^4.5.6",
+    "lodash.isequal": "^4.5.0",
+    "unbuild": "^0.9.4",
     "vue": "3.2.25"
   },
   "peerDependencies": {

@@ -1,16 +1,25 @@
-import SchemaForm from "./SchemaForm.vue";
+import { CharrueSchemaForm } from "./SchemaForm";
+
+import { CharrueSchemaField } from "./SchemaField";
+import { registerWidget, getWidgetComponent } from "./widget-manager";
 
 const INSTALL_KEY = "CharrueSchemaFormNext";
 
-const SchemaFormPlugin = {
+const plugin = {
   install(app: any) {
     if (app[INSTALL_KEY]) return;
 
     app[INSTALL_KEY] = true;
-    app.component("charrue-schema-form", SchemaForm);
+    app.component("CharrueSchemaForm", CharrueSchemaForm);
   },
-}
+};
 
+export default plugin;
+export {
+  CharrueSchemaForm,
+  CharrueSchemaField,
+  registerWidget,
+  getWidgetComponent,
+};
 export * from "./helper";
-export * from "./types";
-export default SchemaFormPlugin;
+export * from "./types/public";
