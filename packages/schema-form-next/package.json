@@ -23,7 +23,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "unbuild",
+    "build": "unbuild && npm run build:style",
+    "build:style": "esno scripts/build-styles.ts",
     "test": "vitest"
   },
   "dependencies": {
@@ -34,8 +35,7 @@
     "@charrue/vue3-bundler": "^0.1.0",
     "@types/lodash.isequal": "^4.5.6",
     "lodash.isequal": "^4.5.0",
-    "unbuild": "^0.9.4",
-    "vue": "3.2.25"
+    "unbuild": "^0.9.4"
   },
   "peerDependencies": {
     "element-plus": "*",
