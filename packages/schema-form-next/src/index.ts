@@ -1,7 +1,7 @@
 import { CharrueSchemaForm } from "./SchemaForm";
 
 import { CharrueSchemaField } from "./SchemaField";
-import { registerWidget, getWidgetComponent } from "./widget-manager";
+import { registerWidget } from "./widget-manager";
 
 const INSTALL_KEY = "CharrueSchemaFormNext";
 
@@ -15,11 +15,6 @@ const plugin = {
 };
 
 export default plugin;
-export {
-  CharrueSchemaForm,
-  CharrueSchemaField,
-  registerWidget,
-  getWidgetComponent,
-};
+export { CharrueSchemaForm, CharrueSchemaField, registerWidget };
 export * from "./helper";
 export * from "./types/public";

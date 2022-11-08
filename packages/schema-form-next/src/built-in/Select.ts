@@ -6,6 +6,10 @@ import type { ListOptionItem, FormSchemaDef } from "../types/public";
 type ElSelectProps = InstanceType<typeof ElSelect>["$props"];
 export type CharrueSelectFieldProps = Omit<ElSelectProps, "modelValue">;
 
+const defaultUiProps = {
+  clearable: true,
+  filterable: true,
+};
 export const CharrueSelectField = defineComponent({
   name: "CharrueSelectField",
   props: {
@@ -51,6 +55,7 @@ export const CharrueSelectField = defineComponent({
       return {
         multiple: fieldSchema.type === "array",
         placeholder: `请选择${fieldSchema.label || ""}`,
+        ...defaultUiProps,
         ...rest,
         remoteMethod: !originRemoteMethod
           ? undefined

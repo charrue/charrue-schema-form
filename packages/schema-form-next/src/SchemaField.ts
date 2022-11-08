@@ -107,7 +107,7 @@ export const CharrueSchemaField = defineComponent({
 
     const onInput = (value: any) => {
       let tempValue = value;
-      if (props.schema.type === "number") {
+      if (props.schema.type === "number" && typeof tempValue === "string") {
         tempValue = tempValue.replace(/[^\d^\\.]+/g, "");
         tempValue = tempValue === "" ? "" : Number(tempValue);
       }

@@ -5,9 +5,6 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "skipLibCheck": true,
-    "declaration": true,
-    "declarationDir": "typings"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules"],

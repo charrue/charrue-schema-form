@@ -9,7 +9,10 @@ export type CharrueInputNumberFieldProps = Omit<
   "modelValue" | "onUpdate:modelValue"
 >;
 
-const CLZ_NAME = "charrue-input-number--no-control";
+const defaultUiProps: CharrueInputNumberFieldProps = {
+  controls: false,
+};
+
 export const CharrueInputNumberField = defineComponent({
   name: "CharrueInputNumberField",
   props: {
@@ -35,9 +38,11 @@ export const CharrueInputNumberField = defineComponent({
     const inputProps = computed(() => {
       const fieldSchema = props.schema;
 
-      const uiProps: CharrueInputNumberFieldProps = fieldSchema.uiProps || {};
-
-      uiProps.class = `${uiProps.class || ""} ${CLZ_NAME}`;
+      const uiProps: CharrueInputNumberFieldProps = {
+        placeholder: `请输入${fieldSchema.label || ""}`,
+        ...defaultUiProps,
+        ...(fieldSchema.uiProps || {}),
+      };
 
       return uiProps;
     });

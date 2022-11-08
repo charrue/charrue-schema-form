@@ -4,6 +4,7 @@ import type {
   ListOptionItem,
   DefaultListOptionValue,
   DefaultFormSchemaExcludeKey,
+  FormSchemaDef,
 } from "./types/public";
 import type {
   CharrueCheckboxFieldProps,
@@ -27,12 +28,7 @@ export const createSelectSchema: CreateSchemaTemplateType<
     prop,
     type: uiProps.multiple ? "array" : "string",
     uiWidget: "select",
-    uiProps: {
-      clearable: true,
-      filterable: true,
-      placeholder: `请选择${label}`,
-      ...(uiProps || {}),
-    },
+    uiProps,
   };
 };
 
@@ -90,11 +86,7 @@ export const createInputSchema: CreateSchemaTemplateType<
     title: label,
     prop,
     type: "string",
-    uiProps: {
-      clearable: true,
-      placeholder: `请输入${label}`,
-      ...uiProps,
-    },
+    uiProps,
   };
 };
 
@@ -110,25 +102,16 @@ export const createInputNumberSchema: CreateSchemaTemplateType<
     title: label,
     prop,
     type: "number",
-    uiProps: {
-      clearable: true,
-      placeholder: `请输入${label}`,
-      ...uiProps,
-    },
+    uiProps,
   };
 };
 
-// /**
-//  * @example
-//  * createSchemaPipeline(
-//  *  createInputSchema("name", "Name"),
-//  *  createDateRangeSchema("dateRange", "Date"),
-//  * )
-//  */
-// export const createSchemaPipeline = (...rest: FormSchemaDef[]) => {
-//   return Array.from(rest).reduce((prev, next) => {
-//     const schemaProp = next.prop;
-//     prev[schemaProp] = next;
-//     return prev;
-//   }, {} as Record<string, FormSchemaDef>);
-// };
+export const createSchemaPipeline = (...rest: FormSchemaDef[]) => {
+  return Array.from(rest).reduce((prev, next) => {
+    const schemaProp = next.prop;
+    if (schemaProp) {
+      prev[schemaProp] = next;
+    }
+    return prev;
+  }, {} as unknown as Record<string, FormSchemaDef>);
+};

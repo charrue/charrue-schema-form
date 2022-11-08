@@ -9,6 +9,10 @@ export type CharrueInputFieldProps = Omit<
   "modelValue" | "onUpdate:modelValue"
 >;
 
+const defaultUiProps: CharrueInputFieldProps = {
+  clearable: true,
+};
+
 export const CharrueInputField = defineComponent({
   name: "CharrueInputField",
   props: {
@@ -33,9 +37,12 @@ export const CharrueInputField = defineComponent({
     };
 
     const inputProps = computed(() => {
+      const fieldSchema = props.schema;
+
       return {
         placeholder: `请输入${props.schema?.label || ""}`,
-        ...(props.schema.uiProps || {}),
+        ...defaultUiProps,
+        ...(fieldSchema.uiProps || {}),
       };
     });
 
