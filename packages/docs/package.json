@@ -1,0 +1,41 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
+  "exports": {
+    ".": {
+      "import": "./dist/charrue-schema-form-docs.js",
+      "require": "./dist/charrue-schema-form-docs.umd.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "main": "./dist/charrue-schema-form-docs.umd.cjs",
+  "module": "./dist/charrue-schema-form-docs.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "deploy": "gh-pages -d .docs/.vitepress/dist -t true",
+    "dev": "vitepress dev docs --host",
+    "docs-build-deploy": "npm run docs-build && npm run docs-deploy",
+    "lint": "eslint src/**/*.{vue,js,ts,tsx}",
+    "lint-fix": "npm run lint -- --fix",
+    "release": "np",
+    "serve": "vitepress serve .docs --host",
+    "site:build": "cross-env NODE_ENV=production vitepress build .docs"
+  },
+  "devDependencies": {
+    "@charrue/schema-form-next": "workspace:*",
+    "@ruabick/md-demo-plugins": "latest",
+    "@ruabick/vitepress-demo-block": "latest",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "cross-env": "^7.0.3",
+    "gh-pages": "^4.0.0",
+    "np": "^7.6.2",
+    "vite-plugin-dts": "^1.4.0",
+    "vitepress": "latest"
+  }
+}
