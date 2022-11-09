@@ -2,14 +2,18 @@ import { h, defineComponent, PropType, computed } from "vue";
 import { ElCheckboxGroup, ElCheckbox, ElCheckboxButton } from "element-plus";
 import { useEnums } from "./useEnums";
 import type { CheckboxValueType } from "element-plus";
-import type { ListOptionItem, FormSchemaDef } from "../types/public";
+import type {
+  ListOptionItem,
+  FormSchemaDef,
+  FieldProps,
+} from "../types/public";
 
 type ElCheckboxGroupProps = InstanceType<typeof ElCheckboxGroup>["$props"];
 type ElCheckboxProps = InstanceType<typeof ElCheckbox>["$props"];
 
 export type CheckboxOptionItem = ListOptionItem<CheckboxValueType>;
 
-export interface CharrueCheckboxFieldProps {
+export type CharrueCheckboxFieldProps = FieldProps<{
   checkboxGroup?: Omit<
     ElCheckboxGroupProps,
     "modelValue" | "onUpdate:modelValue"
@@ -18,7 +22,7 @@ export interface CharrueCheckboxFieldProps {
     | ElCheckboxProps
     | ((item: CheckboxOptionItem, index: number) => ElCheckboxProps);
   isButton?: boolean;
-}
+}>;
 
 export const CharrueCheckboxField = defineComponent({
   name: "CharrueCheckboxField",

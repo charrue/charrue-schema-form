@@ -1,7 +1,11 @@
 import { h, defineComponent, PropType, computed } from "vue";
 import { ElRadioGroup, ElRadio, ElRadioButton } from "element-plus";
 import { useEnums } from "./useEnums";
-import type { FormSchemaDef, ListOptionItem } from "../types/public";
+import type {
+  FormSchemaDef,
+  ListOptionItem,
+  FieldProps,
+} from "../types/public";
 
 type ElRadioGroupProps = InstanceType<typeof ElRadioGroup>["$props"];
 type ElRadioProps = InstanceType<typeof ElRadio>["$props"];
@@ -10,13 +14,13 @@ type RadioValueType = string | number | boolean;
 
 export type RadioListOptionItem = ListOptionItem<RadioValueType>;
 
-export interface CharrueRadioFieldProps {
+export type CharrueRadioFieldProps = FieldProps<{
   radioGroup?: Omit<ElRadioGroupProps, "modelValue" | "onUpdate:modelValue">;
   radio?:
     | ElRadioProps
     | ((item: RadioListOptionItem, index: number) => ElRadioProps);
   isButton?: boolean;
-}
+}>;
 
 export const CharrueRadioField = defineComponent({
   name: "CharrueRadioField",

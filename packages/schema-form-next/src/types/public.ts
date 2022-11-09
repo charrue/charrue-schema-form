@@ -50,3 +50,5 @@ export type CreateSchemaTemplateType<
   label: string,
   config?: Omit<FormSchemaDef<UiProps, OptionItem>, ExcludeKey>
 ) => FormSchemaDef<UiProps, OptionItem>;
+
+export type FieldProps<T> = T & Record<string, any>;

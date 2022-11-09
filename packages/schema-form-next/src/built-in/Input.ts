@@ -1,12 +1,11 @@
 import { defineComponent, h, PropType, computed } from "vue";
 import { ElInput } from "element-plus";
-import type { FormSchemaDef } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types/public";
 
 type ElInputProps = InstanceType<typeof ElInput>["$props"];
 
-export type CharrueInputFieldProps = Omit<
-  ElInputProps,
-  "modelValue" | "onUpdate:modelValue"
+export type CharrueInputFieldProps = FieldProps<
+  Omit<ElInputProps, "modelValue" | "onUpdate:modelValue">
 >;
 
 const defaultUiProps: CharrueInputFieldProps = {

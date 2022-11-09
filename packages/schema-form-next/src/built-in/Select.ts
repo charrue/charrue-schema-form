@@ -1,10 +1,16 @@
 import { h, defineComponent, PropType, computed } from "vue";
 import { ElSelect, ElOption, ElOptionGroup } from "element-plus";
 import { useEnums } from "./useEnums";
-import type { ListOptionItem, FormSchemaDef } from "../types/public";
+import type {
+  ListOptionItem,
+  FormSchemaDef,
+  FieldProps,
+} from "../types/public";
 
 type ElSelectProps = InstanceType<typeof ElSelect>["$props"];
-export type CharrueSelectFieldProps = Omit<ElSelectProps, "modelValue">;
+export type CharrueSelectFieldProps = FieldProps<
+  Omit<ElSelectProps, "modelValue">
+>;
 
 const defaultUiProps = {
   clearable: true,
