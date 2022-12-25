@@ -4,16 +4,15 @@ import { CharrueSchemaForm, FormSchemaDef } from "@charrue/schema-form-next";
 
 const schema: Record<string, FormSchemaDef> = {
   foo: {
-    type: "string",
-    uiWidget: "select",
-    enums: ["A", "B"],
     prop: "foo",
     label: "Foo",
+    type: "string",
+    uiWidget: "rate",
   },
 };
-const foo = ref();
+const value = ref({ foo: 2 });
 </script>
 
 <template>
-  <CharrueSchemaForm v-model:value="foo" :schema="schema"></CharrueSchemaForm>
+  <CharrueSchemaForm v-model="value" :schema="schema"></CharrueSchemaForm>
 </template>

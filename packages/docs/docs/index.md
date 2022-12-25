@@ -13,8 +13,11 @@ hero:
       text: 开始使用
       link: /guide/
 
-# features:
-#   - title: 类型提示
-#     details: TypeScript编写
-#     icon: 🦾
+features:
+  - title: 易于扩展的
+    details: 支持自定义组件
+    icon: 👐
+  - title: 类型提示
+    details: TypeScript编写
+    icon: 🦾
 ---
