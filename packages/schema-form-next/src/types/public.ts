@@ -9,7 +9,21 @@ export type ListOption = string[] | ListOptionItem[];
 
 export type FieldType = "string" | "number" | "array" | "select";
 
-export type FieldWidget = "string" | "select" | "checkbox" | "radio";
+export type FieldWidget =
+  | "input"
+  | "inputNumber"
+  | "select"
+  | "checkbox"
+  | "radio"
+  | "date"
+  | "dateRange"
+  | "timePicker"
+  | "timeSelect"
+  | "switch"
+  | "slider"
+  | "rate"
+  | "cascader"
+  | "transfer";
 
 export interface FormSchemaDef<
   UiProps extends object = Record<string, any>,
