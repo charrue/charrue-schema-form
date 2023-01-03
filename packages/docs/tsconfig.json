@@ -3,6 +3,6 @@
   "compilerOptions": {
     "baseUrl": "./"
   },
-  "include": ["./docs/**/*.ts", "./docs/**/*.vue"],
+  "include": ["./docs/.vitepress/*.ts", "./docs/**/*.vue", "./vite.config.ts"],
   "exclude": ["node_modules"]
 }

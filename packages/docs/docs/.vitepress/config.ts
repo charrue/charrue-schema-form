@@ -4,23 +4,22 @@ import { applyPlugins } from "@ruabick/md-demo-plugins";
 
 const sidebar: DefaultTheme.Config["sidebar"] = [
   {
-    text: "开始使用",
+    text: "功能介绍",
     items: [
       {
-        text: "介绍",
+        text: "开始使用",
         link: "/guide/",
       },
-    ],
-  },
-  {
-    text: "表单组件",
-    items: [
       {
-        text: "全部组件",
+        text: "组件",
         link: "/field/"
       },
+      {
+        text: "插槽",
+        link: "/slots/"
+      },
     ]
-  }
+  },
 ];
 
 export default defineConfig({

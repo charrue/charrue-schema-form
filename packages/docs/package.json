@@ -17,13 +17,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "vite build",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "deploy": "gh-pages -d .docs/.vitepress/dist -t true",
     "dev": "vitepress dev docs --host",
     "docs-build-deploy": "npm run docs-build && npm run docs-deploy",
-    "lint": "eslint src/**/*.{vue,js,ts,tsx}",
-    "lint-fix": "npm run lint -- --fix",
-    "release": "np",
     "serve": "vitepress serve .docs --host",
     "site:build": "cross-env NODE_ENV=production vitepress build .docs"
   },
@@ -31,10 +27,11 @@
     "@charrue/schema-form-next": "workspace:*",
     "@ruabick/md-demo-plugins": "latest",
     "@ruabick/vitepress-demo-block": "latest",
-    "@vitejs/plugin-vue": "^3.0.1",
+    "@vitejs/plugin-vue": "^4.0.0",
     "cross-env": "^7.0.3",
     "gh-pages": "^4.0.0",
     "np": "^7.6.2",
+    "vite": "^4.0.3",
     "vite-plugin-dts": "^1.4.0",
     "vitepress": "latest"
   }
