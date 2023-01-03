@@ -12,3 +12,5 @@ export const FORM_ITEM_SLOT_NAMES = ["label", "error"];
 
 export const FORM_ITEM_SLOT_PREFIX = "formItem";
 export const SLOT_SEP = ":";
+export const isFunction = (fn: any) => typeof fn === "function";
+export const isPromise = (fn: any) => fn instanceof Promise;
