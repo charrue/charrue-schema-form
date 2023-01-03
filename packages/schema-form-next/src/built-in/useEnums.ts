@@ -1,3 +1,4 @@
+import { isFunction, isPromise } from "element-plus/es/utils";
 import { ref, watch } from "vue";
 import { ListOptionItem, ListOption, FormSchemaDef } from "../types/public";
 
@@ -27,9 +28,12 @@ export const useEnums = (enums: FormSchemaDef["enums"]) => {
     (val: any) => {
       if (Array.isArray(val) && val.length > 0) {
         list.value = formatEnumValue(val);
-      } else {
-        // TODO
-        // console.warn("")
+      } else if (isPromise(val)) {
+        val.then((data) => {
+          list.value = formatEnumValue(data);
+        });
+      } else if (isFunction(val)) {
+        list.value = formatEnumValue(val());
       }
     },
     {

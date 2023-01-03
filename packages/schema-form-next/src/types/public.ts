@@ -5,6 +5,8 @@ export interface ListOptionItem<V = DefaultListOptionValue> {
   children?: Array<ListOptionItem<V>>;
 }
 
+type Awaitable<T> = T | PromiseLike<T> | ((...args: any[]) => T);
+
 export type ListOption = string[] | ListOptionItem[];
 
 export type FieldType = "string" | "number" | "array" | "select";
@@ -36,7 +38,7 @@ export interface FormSchemaDef<
   label?: string;
   prop?: string;
   type?: FieldType;
-  enums?: string[] | OptionItem[];
+  enums?: Awaitable<string[] | OptionItem[]>;
   /**
    * @deprecated `uiProps` is recommended
    */

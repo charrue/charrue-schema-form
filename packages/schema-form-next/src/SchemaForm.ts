@@ -68,8 +68,6 @@ export const CharrueSchemaForm = defineComponent({
           }
         }
       });
-      console.log(currentSlots);
-
       return currentSlots;
     });
 
