@@ -22,12 +22,18 @@ export const CharrueSchemaForm = defineComponent({
     "update:modelValue": (value: SchemaFormData) => true,
   },
   setup(props, { emit, slots, expose }) {
-    const fields = computed(() => {
+    const fieldKeys = computed(() => {
       return Object.keys(props.schema || {});
     });
     const elFormRef = ref();
 
-    /** 表单字段插槽 */
+    /**
+     * 表单字段插槽
+     * 共有3种插槽
+     * 1. #name 替代原表单组件
+     * 2. #name:prefix 给原表单组件添加插槽
+     * 3. #formItem:name:label 给FormItem添加label插槽
+     * */
     const fieldSlots = computed(() => {
       const currentSlots: Record<string, Record<string, Slots[string]>> = {};
       Object.keys(slots).forEach((slotName) => {
@@ -36,7 +42,7 @@ export const CharrueSchemaForm = defineComponent({
 
         if (segments?.length === 2) {
           const [fieldProp, fieldSlot = "default"] = segments;
-          if (fields.value.includes(fieldProp) && fieldSlot) {
+          if (fieldKeys.value.includes(fieldProp) && fieldSlot) {
             currentSlots[fieldProp][fieldSlot] = slots[slotName]!;
           }
         }
@@ -45,7 +51,7 @@ export const CharrueSchemaForm = defineComponent({
           const [_, fieldProp, formItemSlot] = segments;
           if (
             _ === FORM_ITEM_SLOT_PREFIX &&
-            fields.value.includes(fieldProp) &&
+            fieldKeys.value.includes(fieldProp) &&
             FORM_ITEM_SLOT_NAMES.includes(formItemSlot)
           ) {
             currentSlots[fieldProp][
@@ -61,7 +67,7 @@ export const CharrueSchemaForm = defineComponent({
     /** rule + required */
     const computedRules = computed(() => {
       const { rules, schema } = props;
-      return fields.value.reduce((acc, fieldProp) => {
+      return fieldKeys.value.reduce((acc, fieldProp) => {
         if (rules?.[fieldProp]) {
           acc[fieldProp] = rules[fieldProp];
         } else if (schema?.[fieldProp]?.required) {
@@ -80,7 +86,7 @@ export const CharrueSchemaForm = defineComponent({
     const formData = ref<SchemaFormData>({});
     const defaultValue = computed(() => {
       const { schema } = props;
-      return fields.value.reduce((acc, fieldProp) => {
+      return fieldKeys.value.reduce((acc, fieldProp) => {
         if (schema?.[fieldProp] && has(schema[fieldProp], "default")) {
           acc[fieldProp] = schema[fieldProp].default;
         }
@@ -133,11 +139,14 @@ export const CharrueSchemaForm = defineComponent({
       scrollToField: () => elFormRef.value?.scrollToField?.(),
       clearValidate: () => elFormRef.value?.clearValidate?.(),
       validateField: () => elFormRef.value?.validateField?.(),
-      resetFields: () => elFormRef.value?.resetFields?.(),
+      resetFields: () => {
+        elFormRef.value?.resetFields?.();
+        formData.value = defaultValue.value;
+      },
     });
 
     return {
-      fields,
+      fieldKeys,
       elFormRef,
       formData,
       computedRules,
@@ -169,7 +178,7 @@ export const CharrueSchemaForm = defineComponent({
         onValidate: this.onValidate,
       },
       () => [
-        ...this.fields.map((fieldProp, index) => {
+        ...this.fieldKeys.map((fieldProp, index) => {
           return h(
             CharrueSchemaField,
             {
