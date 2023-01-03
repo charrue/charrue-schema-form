@@ -37,18 +37,26 @@ export const CharrueSchemaForm = defineComponent({
     const fieldSlots = computed(() => {
       const currentSlots: Record<string, Record<string, Slots[string]>> = {};
       Object.keys(slots).forEach((slotName) => {
-        currentSlots[slotName] = {};
         const segments = slotName.split(SLOT_SEP);
+        const len = segments.length;
 
-        if (segments?.length === 2) {
+        if (len === 1 || len === 2) {
           const [fieldProp, fieldSlot = "default"] = segments;
+          if (!currentSlots[fieldProp]) {
+            currentSlots[fieldProp] = {};
+          }
+
           if (fieldKeys.value.includes(fieldProp) && fieldSlot) {
             currentSlots[fieldProp][fieldSlot] = slots[slotName]!;
           }
         }
 
-        if (segments?.length === 3) {
+        if (len === 3) {
           const [_, fieldProp, formItemSlot] = segments;
+          if (!currentSlots[fieldProp]) {
+            currentSlots[fieldProp] = {};
+          }
+
           if (
             _ === FORM_ITEM_SLOT_PREFIX &&
             fieldKeys.value.includes(fieldProp) &&
@@ -60,6 +68,7 @@ export const CharrueSchemaForm = defineComponent({
           }
         }
       });
+      console.log(currentSlots);
 
       return currentSlots;
     });

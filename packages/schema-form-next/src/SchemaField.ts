@@ -5,6 +5,8 @@ import { FormSchemaDef } from "./types/public";
 import { FORM_ITEM_SLOT_PREFIX, isEqual, SLOT_SEP } from "./utils";
 import { getWidgetComponent } from "./widget-manager";
 
+const PREFIX = FORM_ITEM_SLOT_PREFIX + SLOT_SEP;
+
 const FIELD_CLZ = "charrue-schema-field-item";
 export const CharrueSchemaField = defineComponent({
   name: "CharrueSchemaField",
@@ -57,13 +59,12 @@ export const CharrueSchemaField = defineComponent({
       };
 
       Object.keys(slots).forEach((name) => {
-        const index = name.indexOf(FORM_ITEM_SLOT_PREFIX + SLOT_SEP);
+        const index = name.indexOf(PREFIX);
         if (index === -1) {
           formItemAndFieldSlots.field[name] = slots[name] as Slot;
         } else {
-          formItemAndFieldSlots.formItem[name.slice(index)] = slots[
-            name
-          ] as Slot;
+          formItemAndFieldSlots.formItem[name.slice(index + PREFIX.length)] =
+            slots[name] as Slot;
         }
       });
 
@@ -141,7 +142,7 @@ export const CharrueSchemaField = defineComponent({
     } = this;
 
     const Field =
-      computedSlots.field[fieldSchema.prop]?.({
+      computedSlots.field?.default?.({
         value: currentValue,
         prop: fieldSchema.prop,
       }) ||
