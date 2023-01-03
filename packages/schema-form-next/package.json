@@ -13,8 +13,8 @@
     "directory": "packages/schema-form-next"
   },
   "license": "MIT",
-  "main": "dist/index.mjs",
-  "unpkg": "dist/index.mjs",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.global.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "files": [
@@ -23,7 +23,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "unbuild && npm run build:style",
+    "build": "tsup && npm run build:full && npm run build:style",
+    "build:full": "tsup --config=tsup.full.config.ts",
     "build:style": "esno scripts/build-styles.ts",
     "test": "vitest"
   },
@@ -32,16 +33,15 @@
     "vue": "^3.2.41"
   },
   "devDependencies": {
-    "@charrue/vue3-bundler": "^0.1.0",
     "@types/lodash.isequal": "^4.5.6",
-    "lodash.isequal": "^4.5.0",
-    "unbuild": "^0.9.4"
+    "lodash.isequal": "^4.5.0"
   },
   "peerDependencies": {
     "element-plus": "*",
     "vue": "3"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
