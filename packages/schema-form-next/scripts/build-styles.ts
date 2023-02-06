@@ -1,7 +1,10 @@
 import { mkdirSync, readdirSync, statSync, writeFileSync } from "fs";
-import { resolve, basename } from "path";
-import { compile } from "sass";
+import { resolve, basename, dirname } from "path";
+import { fileURLToPath } from "url";
+import Sass from "sass";
 
+// eslint-disable-next-line no-underscore-dangle
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const STYLE_DIR = resolve(__dirname, "../styles");
 const STYLE_DIST = resolve(__dirname, "../dist/styles");
 
@@ -28,7 +31,7 @@ const readDirFiles = (path: string) => {
 mkdirSync(STYLE_DIST, { recursive: true });
 
 readDirFiles(STYLE_DIR).forEach((p) => {
-  const { css } = compile(p);
+  const { css } = Sass.compile(p);
   if (css) {
     const cssFilename = basename(p).replace(".scss", ".css");
     writeFileSync(resolve(STYLE_DIST, cssFilename), css, {
