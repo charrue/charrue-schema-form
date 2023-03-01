@@ -25,7 +25,8 @@ export type FieldWidget =
   | "slider"
   | "rate"
   | "cascader"
-  | "transfer";
+  | "transfer"
+  | "colorPicker";
 
 export interface FormSchemaDef<
   UiProps extends object = Record<string, any>,

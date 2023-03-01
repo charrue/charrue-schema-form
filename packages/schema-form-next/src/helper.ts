@@ -24,6 +24,7 @@ import type { CharrueSliderFieldProps } from "./built-in/Slider";
 import type { CharrueTimePickerFieldProps } from "./built-in/TimePicker";
 import type { CharrueTimeSelectFieldProps } from "./built-in/TimeSelect";
 import type { CharrueTransferFieldProps } from "./built-in/Transfer";
+import type { CharrueColorPickerFieldProps } from "./built-in/ColorPicker";
 
 export const createSelectSchema: CreateSchemaTemplateType<
   CharrueSelectFieldProps
@@ -229,6 +230,21 @@ export const createTransferSchema: CreateSchemaTemplateType<
     prop,
     type: "string",
     uiWidget: "transfer",
+    uiProps,
+  };
+};
+
+export const createColorPickerSchema: CreateSchemaTemplateType<
+  CharrueColorPickerFieldProps
+> = (prop, label, config = {}) => {
+  const uiProps = config["ui-props"] || config.uiProps || {};
+
+  return {
+    ...(config || {}),
+    title: label,
+    prop,
+    type: "string",
+    uiWidget: "colorPicker",
     uiProps,
   };
 };
