@@ -7,7 +7,7 @@ type ElDatePickerProps = InstanceType<typeof ElDatePicker>["$props"];
 export type CharrueDateFieldProps = FieldProps<
   Omit<ElDatePickerProps, "modelValue" | "onUpdate:modelValue" | "type">
 > & {
-  type: "year" | "month" | "date" | "datetime" | "week";
+  type?: "year" | "month" | "date" | "datetime" | "week";
 };
 
 const defaultUiProps: CharrueDateFieldProps = {

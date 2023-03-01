@@ -13,6 +13,7 @@ import { CharrueSliderField } from "./built-in/Slider";
 import { CharrueRateField } from "./built-in/Rate";
 import { CharrueCascaderField } from "./built-in/Cascader";
 import { CharrueTransferField } from "./built-in/Transfer";
+import { CharrueColorPickerField } from "./built-in/ColorPicker";
 
 import type { FieldWidget } from "./types/public";
 
@@ -31,6 +32,7 @@ globalWidget.set("slider", CharrueSliderField);
 globalWidget.set("rate", CharrueRateField);
 globalWidget.set("cascader", CharrueCascaderField);
 globalWidget.set("transfer", CharrueTransferField);
+globalWidget.set("colorPicker", CharrueColorPickerField);
 
 export const getWidgetComponent = (type: string): Component => {
   if (type === "string") return globalWidget.get("input")!;
