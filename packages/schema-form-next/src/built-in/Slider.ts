@@ -1,20 +1,25 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import { ElSlider } from "element-plus";
+import { ElSlider, SliderProps, SliderEmits } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
-type ElSliderProps = InstanceType<typeof ElSlider>["$props"];
+type ElSliderProps = Partial<SliderProps>;
 
 export type CharrueSliderFieldProps = FieldProps<
   Omit<ElSliderProps, "modelValue" | "onUpdate:modelValue" | "type">
 >;
 
 const defaultUiProps: CharrueSliderFieldProps = {};
+const emits: SliderEmits = {
+  "update:modelValue": (value: number | number[]) => true,
+  input: (value: number | number[]) => true,
+  change: (value: number | number[]) => true,
+};
 
 export const CharrueSliderField = defineComponent({
   name: "CharrueSliderField",
   props: {
     modelValue: {
-      type: [Number] as PropType<ElSliderProps["modelValue"]>,
+      type: [Number, Array] as PropType<ElSliderProps["modelValue"]>,
       default: undefined,
     },
     schema: {
@@ -27,9 +32,9 @@ export const CharrueSliderField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change", "input"],
+  emits,
   setup(props, { emit }) {
-    const onInput = (value: ElSliderProps["modelValue"]) => {
+    const onInput = (value: number | number[]) => {
       emit("update:modelValue", value);
     };
 

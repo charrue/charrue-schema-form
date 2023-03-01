@@ -1,22 +1,33 @@
 import { computed, defineComponent, h, PropType } from "vue";
-import { ElInputNumber } from "element-plus";
+import {
+  ElInputNumber,
+  InputNumberProps,
+  InputNumberEmits,
+} from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
-type ElInputNumberProps = InstanceType<typeof ElInputNumber>["$props"];
+type ElInputNumberProps = Partial<InputNumberProps>;
 
 export type CharrueInputNumberFieldProps = FieldProps<
-  Omit<ElInputNumberProps, "modelValue" | "onUpdate:modelValue">
+  Omit<ElInputNumberProps, "modelValue">
 >;
 
 const defaultUiProps: CharrueInputNumberFieldProps = {
   controls: false,
+};
+const emits: InputNumberEmits = {
+  change: (prev: number | undefined, cur: number | undefined) => true,
+  blur: (e: FocusEvent) => true,
+  focus: (e: FocusEvent) => true,
+  input: (val: number | null | undefined) => true,
+  "update:modelValue": (val: number | undefined) => true,
 };
 
 export const CharrueInputNumberField = defineComponent({
   name: "CharrueInputNumberField",
   props: {
     modelValue: {
-      type: [Number, String] as PropType<number | "" | undefined>,
+      type: [Number, String] as PropType<ElInputNumberProps["modelValue"]>,
       default: "",
     },
     schema: {
@@ -29,10 +40,10 @@ export const CharrueInputNumberField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change", "blur", "focus"],
+  emits,
   setup(props, { emit }) {
     const onInput = (value: number | undefined) => {
-      emit("update:modelValue", value === undefined ? "" : value);
+      emit("update:modelValue", value || undefined);
     };
     const inputProps = computed(() => {
       const fieldSchema = props.schema;
@@ -65,8 +76,7 @@ export const CharrueInputNumberField = defineComponent({
       {
         ...$attrs,
         ...inputProps,
-        // ElInputNumber不接受string类型，所以判断如果是""，则传入undefined
-        modelValue: modelValue === "" ? undefined : modelValue,
+        modelValue,
         "onUpdate:modelValue": onInput,
       },
       $slots

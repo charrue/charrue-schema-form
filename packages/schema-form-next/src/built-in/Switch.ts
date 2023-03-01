@@ -1,14 +1,19 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import { ElSwitch } from "element-plus";
+import { ElSwitch, SwitchProps, SwitchEmits } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
-type ElSwitchProps = InstanceType<typeof ElSwitch>["$props"];
+type ElSwitchProps = Partial<SwitchProps>;
 
 export type CharrueSwitchFieldProps = FieldProps<
   Omit<ElSwitchProps, "modelValue" | "onUpdate:modelValue" | "type">
 >;
 
 const defaultUiProps: CharrueSwitchFieldProps = {};
+const emits: Partial<SwitchEmits> = {
+  "update:modelValue": (val: boolean | string | number) => true,
+  change: (val: boolean | string | number) => true,
+  input: (val: boolean | string | number) => true,
+};
 
 export const CharrueSwitchField = defineComponent({
   name: "CharrueSwitchField",
@@ -27,7 +32,7 @@ export const CharrueSwitchField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change"],
+  emits,
   setup(props, { emit }) {
     const onInput = (value: ElSwitchProps["modelValue"]) => {
       emit("update:modelValue", value);

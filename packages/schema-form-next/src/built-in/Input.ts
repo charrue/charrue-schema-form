@@ -1,15 +1,28 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import { ElInput } from "element-plus";
+import { ElInput, InputProps, InputEmits } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
-type ElInputProps = InstanceType<typeof ElInput>["$props"];
-
+type ElInputProps = Partial<InputProps>;
 export type CharrueInputFieldProps = FieldProps<
-  Omit<ElInputProps, "modelValue" | "onUpdate:modelValue">
+  Omit<ElInputProps, "modelValue">
 >;
 
 const defaultUiProps: CharrueInputFieldProps = {
   clearable: true,
+};
+const emits: InputEmits = {
+  "update:modelValue": (value: string) => true,
+  input: (value: string) => true,
+  change: (value: string) => true,
+  focus: (evt: FocusEvent) => true,
+  blur: (evt: FocusEvent) => true,
+  clear: () => true,
+  mouseleave: (evt: MouseEvent) => true,
+  mouseenter: (evt: MouseEvent) => true,
+  keydown: (evt: KeyboardEvent | Event) => true,
+  compositionstart: (evt: CompositionEvent) => true,
+  compositionupdate: (evt: CompositionEvent) => true,
+  compositionend: (evt: CompositionEvent) => true,
 };
 
 export const CharrueInputField = defineComponent({
@@ -29,7 +42,7 @@ export const CharrueInputField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change", "blur", "focus"],
+  emits,
   setup(props, { emit }) {
     const onInput = (value: string) => {
       emit("update:modelValue", value);

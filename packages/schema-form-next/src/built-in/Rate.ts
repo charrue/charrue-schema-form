@@ -1,14 +1,18 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import { ElRate } from "element-plus";
+import { ElRate, RateProps } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
-type ElRateProps = InstanceType<typeof ElRate>["$props"];
+type ElRateProps = Partial<RateProps>;
 
 export type CharrueRateFieldProps = FieldProps<
   Omit<ElRateProps, "modelValue" | "onUpdate:modelValue" | "type">
 >;
 
 const defaultUiProps: CharrueRateFieldProps = {};
+const emits = {
+  change: (value: number) => true,
+  "update:modelValue": (value: number | undefined) => true,
+};
 
 export const CharrueRateField = defineComponent({
   name: "CharrueRateField",
@@ -27,7 +31,7 @@ export const CharrueRateField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change"],
+  emits,
   setup(props, { emit }) {
     const onInput = (value: ElRateProps["modelValue"]) => {
       emit("update:modelValue", value);

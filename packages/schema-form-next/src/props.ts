@@ -1,4 +1,4 @@
-import { PropType } from "vue";
+import { ExtractPropTypes, PropType } from "vue";
 import { ElForm } from "element-plus";
 import type { FormRules } from "element-plus";
 import type { FormSchemaDef } from "./types/public";
@@ -78,3 +78,5 @@ export const schemaFormProps = {
     default: false,
   },
 };
+
+export type SchemaFormProps = ExtractPropTypes<typeof schemaFormProps>;

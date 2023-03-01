@@ -1,14 +1,36 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import { ElTransfer } from "element-plus";
+import {
+  ElTransfer,
+  TransferProps,
+  TransferEmits,
+  TransferDirection,
+  TransferKey,
+} from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
-type ElTransferProps = InstanceType<typeof ElTransfer>["$props"];
+type ElTransferProps = Partial<TransferProps>;
 
 export type CharrueTransferFieldProps = FieldProps<
-  Omit<ElTransferProps, "modelValue" | "onUpdate:modelValue">
+  Omit<ElTransferProps, "modelValue">
 >;
 
 const defaultUiProps: CharrueTransferFieldProps = {};
+const emits: TransferEmits = {
+  change: (
+    value: TransferKey[],
+    direction: TransferDirection,
+    movedKeys: TransferKey[]
+  ) => true,
+  "update:modelValue": (value: TransferKey[]) => true,
+  "left-check-change": (
+    value: TransferKey[],
+    movedKeys?: TransferKey[] | undefined
+  ) => true,
+  "right-check-change": (
+    value: TransferKey[],
+    movedKeys?: TransferKey[] | undefined
+  ) => true,
+};
 
 export const CharrueTransferField = defineComponent({
   name: "CharrueTransferField",
@@ -27,14 +49,9 @@ export const CharrueTransferField = defineComponent({
       required: true,
     },
   },
-  emits: [
-    "update:modelValue",
-    "change",
-    "left-check-change",
-    "right-check-change",
-  ],
+  emits,
   setup(props, { emit }) {
-    const onInput = (value: ElTransferProps["modelValue"]) => {
+    const onInput = (value: NonNullable<ElTransferProps["modelValue"]>) => {
       emit("update:modelValue", value);
     };
 

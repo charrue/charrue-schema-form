@@ -114,7 +114,9 @@ export const createInputNumberSchema: CreateSchemaTemplateType<
   };
 };
 
-export const createDateSchema: CreateSchemaTemplateType<CharrueDateFieldProps> = (prop, label, config = {}) => {
+export const createDateSchema: CreateSchemaTemplateType<
+  CharrueDateFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -125,9 +127,10 @@ export const createDateSchema: CreateSchemaTemplateType<CharrueDateFieldProps> =
     uiWidget: "date",
     uiProps,
   };
-}
-;
-export const createDateRangeSchema: CreateSchemaTemplateType<CharrueDateRangeFieldProps> = (prop, label, config = {}) => {
+};
+export const createDateRangeSchema: CreateSchemaTemplateType<
+  CharrueDateRangeFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -140,7 +143,9 @@ export const createDateRangeSchema: CreateSchemaTemplateType<CharrueDateRangeFie
   };
 };
 
-export const createCascadeSchema: CreateSchemaTemplateType<CharrueCascaderFieldProps>  = (prop, label, config = {}) => {
+export const createCascadeSchema: CreateSchemaTemplateType<
+  CharrueCascaderFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -151,9 +156,11 @@ export const createCascadeSchema: CreateSchemaTemplateType<CharrueCascaderFieldP
     uiWidget: "cascader",
     uiProps,
   };
-}
+};
 
-export const createSwitchSchema: CreateSchemaTemplateType<CharrueSwitchFieldProps>  = (prop, label, config = {}) => {
+export const createSwitchSchema: CreateSchemaTemplateType<
+  CharrueSwitchFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -164,9 +171,11 @@ export const createSwitchSchema: CreateSchemaTemplateType<CharrueSwitchFieldProp
     uiWidget: "switch",
     uiProps,
   };
-}
+};
 
-export const createSliderSchema: CreateSchemaTemplateType<CharrueSliderFieldProps>  = (prop, label, config = {}) => {
+export const createSliderSchema: CreateSchemaTemplateType<
+  CharrueSliderFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -177,9 +186,11 @@ export const createSliderSchema: CreateSchemaTemplateType<CharrueSliderFieldProp
     uiWidget: "slider",
     uiProps,
   };
-}
+};
 
-export const createTimePickerSchema: CreateSchemaTemplateType<CharrueTimePickerFieldProps>  = (prop, label, config = {}) => {
+export const createTimePickerSchema: CreateSchemaTemplateType<
+  CharrueTimePickerFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -190,9 +201,11 @@ export const createTimePickerSchema: CreateSchemaTemplateType<CharrueTimePickerF
     uiWidget: "timePicker",
     uiProps,
   };
-}
+};
 
-export const createTimeSelectSchema: CreateSchemaTemplateType<CharrueTimeSelectFieldProps>  = (prop, label, config = {}) => {
+export const createTimeSelectSchema: CreateSchemaTemplateType<
+  CharrueTimeSelectFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -203,9 +216,11 @@ export const createTimeSelectSchema: CreateSchemaTemplateType<CharrueTimeSelectF
     uiWidget: "timeSelect",
     uiProps,
   };
-}
+};
 
-export const createTransferSchema: CreateSchemaTemplateType<CharrueTransferFieldProps>  = (prop, label, config = {}) => {
+export const createTransferSchema: CreateSchemaTemplateType<
+  CharrueTransferFieldProps
+> = (prop, label, config = {}) => {
   const uiProps = config["ui-props"] || config.uiProps || {};
 
   return {
@@ -216,7 +231,7 @@ export const createTransferSchema: CreateSchemaTemplateType<CharrueTransferField
     uiWidget: "transfer",
     uiProps,
   };
-}
+};
 
 export const createSchemaPipeline = (...rest: FormSchemaDef[]) => {
   return Array.from(rest).reduce((prev, next) => {

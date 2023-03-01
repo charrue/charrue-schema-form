@@ -1,5 +1,12 @@
 import { h, defineComponent, PropType, computed } from "vue";
-import { ElRadioGroup, ElRadio, ElRadioButton } from "element-plus";
+import {
+  ElRadioGroup,
+  ElRadio,
+  ElRadioButton,
+  RadioProps,
+  RadioGroupProps,
+  RadioGroupEmits,
+} from "element-plus";
 import { useEnums } from "./useEnums";
 import type {
   FormSchemaDef,
@@ -7,26 +14,31 @@ import type {
   FieldProps,
 } from "../types/public";
 
-type ElRadioGroupProps = InstanceType<typeof ElRadioGroup>["$props"];
-type ElRadioProps = InstanceType<typeof ElRadio>["$props"];
+type ElRadioGroupProps = Partial<RadioGroupProps>;
+type ElRadioProps = Partial<RadioProps>;
 
-type RadioValueType = string | number | boolean;
-
-export type RadioListOptionItem = ListOptionItem<RadioValueType>;
+export type RadioListOptionItem = ListOptionItem<ElRadioProps["modelValue"]>;
 
 export type CharrueRadioFieldProps = FieldProps<{
-  radioGroup?: Omit<ElRadioGroupProps, "modelValue" | "onUpdate:modelValue">;
+  radioGroup?: Omit<ElRadioGroupProps, "modelValue">;
   radio?:
     | ElRadioProps
     | ((item: RadioListOptionItem, index: number) => ElRadioProps);
   isButton?: boolean;
 }>;
 
+const emits: RadioGroupEmits = {
+  "update:modelValue": (val: string | number | boolean) => true,
+  change: (val: string | number | boolean) => true,
+};
+
 export const CharrueRadioField = defineComponent({
   name: "CharrueRadioField",
   props: {
     modelValue: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean] as PropType<
+        RadioGroupProps["modelValue"]
+      >,
       default: undefined,
     },
     schema: {
@@ -37,10 +49,10 @@ export const CharrueRadioField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change"],
+  emits,
   setup(props, { emit }) {
     const options = useEnums(props.schema.enums);
-    const onInput = (val: RadioValueType) => {
+    const onInput = (val: RadioGroupProps["modelValue"]) => {
       emit("update:modelValue", val);
     };
 

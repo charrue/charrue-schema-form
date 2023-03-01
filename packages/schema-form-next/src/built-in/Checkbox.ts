@@ -1,5 +1,12 @@
 import { h, defineComponent, PropType, computed } from "vue";
-import { ElCheckboxGroup, ElCheckbox, ElCheckboxButton } from "element-plus";
+import {
+  ElCheckboxGroup,
+  ElCheckbox,
+  ElCheckboxButton,
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxGroupEmits,
+} from "element-plus";
 import { useEnums } from "./useEnums";
 import type { CheckboxValueType } from "element-plus";
 import type {
@@ -8,21 +15,23 @@ import type {
   FieldProps,
 } from "../types/public";
 
-type ElCheckboxGroupProps = InstanceType<typeof ElCheckboxGroup>["$props"];
-type ElCheckboxProps = InstanceType<typeof ElCheckbox>["$props"];
+type ElCheckboxGroupProps = Partial<CheckboxGroupProps>;
+type ElCheckboxProps = Partial<CheckboxProps>;
 
 export type CheckboxOptionItem = ListOptionItem<CheckboxValueType>;
 
 export type CharrueCheckboxFieldProps = FieldProps<{
-  checkboxGroup?: Omit<
-    ElCheckboxGroupProps,
-    "modelValue" | "onUpdate:modelValue"
-  >;
+  checkboxGroup?: Omit<ElCheckboxGroupProps, "modelValue">;
   checkbox?:
     | ElCheckboxProps
     | ((item: CheckboxOptionItem, index: number) => ElCheckboxProps);
   isButton?: boolean;
 }>;
+
+const emits: CheckboxGroupEmits = {
+  "update:modelValue": (val: CheckboxValueType[]) => true,
+  change: (val: CheckboxValueType[]) => true,
+};
 
 export const CharrueCheckboxField = defineComponent({
   name: "CharrueCheckboxField",
@@ -41,7 +50,7 @@ export const CharrueCheckboxField = defineComponent({
       required: true,
     },
   },
-  emits: ["update:modelValue", "change"],
+  emits,
   setup(props, { emit }) {
     const options = useEnums(props.schema.enums);
     const onInput = (val: CheckboxValueType[]) => {
