@@ -18,21 +18,14 @@ export const CharrueCascaderField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueCascaderFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueCascaderFieldProps>, "enums">>,
       default() {
         return {};
       },
       required: true,
     },
   },
-  emits: [
-    "update:modelValue",
-    "change",
-    "left-check-change",
-    "right-check-change",
-  ],
+  emits: ["update:modelValue", "change", "left-check-change", "right-check-change"],
   setup(props, { emit }) {
     const onInput = (value: ElCascaderProps["modelValue"]) => {
       emit("update:modelValue", value);
@@ -71,7 +64,7 @@ export const CharrueCascaderField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

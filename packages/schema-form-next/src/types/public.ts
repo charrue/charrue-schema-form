@@ -1,4 +1,4 @@
-export type DefaultListOptionValue = string | number;
+export type DefaultListOptionValue = string | number | boolean;
 export interface ListOptionItem<V = DefaultListOptionValue> {
   value: V;
   label: string;
@@ -26,11 +26,12 @@ export type FieldWidget =
   | "rate"
   | "cascader"
   | "transfer"
-  | "colorPicker";
+  | "colorPicker"
+  | string;
 
 export interface FormSchemaDef<
   UiProps extends object = Record<string, any>,
-  OptionItem extends object = ListOptionItem<DefaultListOptionValue>
+  OptionItem extends object = ListOptionItem<DefaultListOptionValue>,
 > {
   /**
    * @deprecated `label` is recommended
@@ -61,11 +62,11 @@ export type DefaultFormSchemaExcludeKey = "title" | "prop" | "type";
 export type CreateSchemaTemplateType<
   UiProps extends object = Record<string, any>,
   OptionItem extends object = ListOptionItem<DefaultListOptionValue>,
-  ExcludeKey extends string = DefaultFormSchemaExcludeKey
+  ExcludeKey extends string = DefaultFormSchemaExcludeKey,
 > = (
   prop: string,
   label: string,
-  config?: Omit<FormSchemaDef<UiProps, OptionItem>, ExcludeKey>
+  config?: Omit<FormSchemaDef<UiProps, OptionItem>, ExcludeKey>,
 ) => FormSchemaDef<UiProps, OptionItem>;
 
 export type FieldProps<T> = T & Record<string, any>;

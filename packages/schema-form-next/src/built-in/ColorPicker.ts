@@ -1,9 +1,5 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import {
-  ElColorPicker,
-  ColorPickerProps,
-  ColorPickerEmits,
-} from "element-plus";
+import { ElColorPicker, ColorPickerProps, ColorPickerEmits } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
 export type CharrueColorPickerFieldProps = FieldProps<
@@ -25,9 +21,7 @@ export const CharrueColorPickerField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueColorPickerFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueColorPickerFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -72,7 +66,7 @@ export const CharrueColorPickerField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

@@ -1,16 +1,10 @@
 import { computed, defineComponent, h, PropType } from "vue";
-import {
-  ElInputNumber,
-  InputNumberProps,
-  InputNumberEmits,
-} from "element-plus";
+import { ElInputNumber, InputNumberProps, InputNumberEmits } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
 type ElInputNumberProps = Partial<InputNumberProps>;
 
-export type CharrueInputNumberFieldProps = FieldProps<
-  Omit<ElInputNumberProps, "modelValue">
->;
+export type CharrueInputNumberFieldProps = FieldProps<Omit<ElInputNumberProps, "modelValue">>;
 
 const defaultUiProps: CharrueInputNumberFieldProps = {
   controls: false,
@@ -27,13 +21,11 @@ export const CharrueInputNumberField = defineComponent({
   name: "CharrueInputNumberField",
   props: {
     modelValue: {
-      type: [Number, String] as PropType<ElInputNumberProps["modelValue"]>,
-      default: "",
+      type: Number as PropType<ElInputNumberProps["modelValue"]>,
+      default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueInputNumberFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueInputNumberFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -79,7 +71,7 @@ export const CharrueInputNumberField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

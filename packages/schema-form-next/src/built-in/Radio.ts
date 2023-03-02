@@ -8,22 +8,16 @@ import {
   RadioGroupEmits,
 } from "element-plus";
 import { useEnums } from "./useEnums";
-import type {
-  FormSchemaDef,
-  ListOptionItem,
-  FieldProps,
-} from "../types/public";
+import type { FormSchemaDef, ListOptionItem, FieldProps } from "../types/public";
 
 type ElRadioGroupProps = Partial<RadioGroupProps>;
 type ElRadioProps = Partial<RadioProps>;
 
-export type RadioListOptionItem = ListOptionItem<ElRadioProps["modelValue"]>;
+export type RadioListOptionItem = ListOptionItem<string | number | boolean>;
 
 export type CharrueRadioFieldProps = FieldProps<{
   radioGroup?: Omit<ElRadioGroupProps, "modelValue">;
-  radio?:
-    | ElRadioProps
-    | ((item: RadioListOptionItem, index: number) => ElRadioProps);
+  radio?: ElRadioProps | ((item: RadioListOptionItem, index: number) => ElRadioProps);
   isButton?: boolean;
 }>;
 
@@ -36,9 +30,7 @@ export const CharrueRadioField = defineComponent({
   name: "CharrueRadioField",
   props: {
     modelValue: {
-      type: [String, Number, Boolean] as PropType<
-        RadioGroupProps["modelValue"]
-      >,
+      type: [String, Number, Boolean] as PropType<RadioGroupProps["modelValue"]>,
       default: undefined,
     },
     schema: {
@@ -108,12 +100,12 @@ export const CharrueRadioField = defineComponent({
             radioProps.isButton ? ElRadioButton : ElRadio,
             {
               ...itemProps,
-              value: item.value,
+              label: item.value,
               key: `radio-item-${index}-${item.value}`,
             },
-            () => item.label
+            () => item.label,
           );
-        })
+        }),
     );
   },
 });

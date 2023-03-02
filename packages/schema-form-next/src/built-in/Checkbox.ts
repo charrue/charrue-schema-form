@@ -9,11 +9,7 @@ import {
 } from "element-plus";
 import { useEnums } from "./useEnums";
 import type { CheckboxValueType } from "element-plus";
-import type {
-  ListOptionItem,
-  FormSchemaDef,
-  FieldProps,
-} from "../types/public";
+import type { ListOptionItem, FormSchemaDef, FieldProps } from "../types/public";
 
 type ElCheckboxGroupProps = Partial<CheckboxGroupProps>;
 type ElCheckboxProps = Partial<CheckboxProps>;
@@ -22,9 +18,7 @@ export type CheckboxOptionItem = ListOptionItem<CheckboxValueType>;
 
 export type CharrueCheckboxFieldProps = FieldProps<{
   checkboxGroup?: Omit<ElCheckboxGroupProps, "modelValue">;
-  checkbox?:
-    | ElCheckboxProps
-    | ((item: CheckboxOptionItem, index: number) => ElCheckboxProps);
+  checkbox?: ElCheckboxProps | ((item: CheckboxOptionItem, index: number) => ElCheckboxProps);
   isButton?: boolean;
 }>;
 
@@ -68,8 +62,7 @@ export const CharrueCheckboxField = defineComponent({
 
       const uiProps = fieldSchema["ui-props"] || fieldSchema.uiProps || {};
       return {
-        checkboxGroup:
-          uiProps.checkboxGroup || defaultCheckboxProps.checkboxGroup,
+        checkboxGroup: uiProps.checkboxGroup || defaultCheckboxProps.checkboxGroup,
         checkbox: uiProps.checkbox || defaultCheckboxProps.checkbox,
         isButton: uiProps.isButton || defaultCheckboxProps.isButton,
       };
@@ -112,9 +105,9 @@ export const CharrueCheckboxField = defineComponent({
               label: item.value,
               key: `checkbox-item-${index}-${item.value}`,
             },
-            () => item.label
+            () => item.label,
           );
-        })
+        }),
     );
   },
 });

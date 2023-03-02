@@ -22,9 +22,7 @@ export const CharrueRateField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueRateFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueRateFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -70,7 +68,7 @@ export const CharrueRateField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

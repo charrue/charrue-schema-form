@@ -2,13 +2,7 @@
 import { h, ref, watch, defineComponent, computed, Slots } from "vue";
 import { ElForm } from "element-plus";
 import { CharrueSchemaField } from "./SchemaField";
-import {
-  isEqual,
-  has,
-  SLOT_SEP,
-  FORM_ITEM_SLOT_NAMES,
-  FORM_ITEM_SLOT_PREFIX,
-} from "./utils";
+import { isEqual, has, SLOT_SEP, FORM_ITEM_SLOT_NAMES, FORM_ITEM_SLOT_PREFIX } from "./utils";
 import type { FormRules, FormItemProp } from "element-plus";
 import { schemaFormProps } from "./props";
 
@@ -62,9 +56,8 @@ export const CharrueSchemaForm = defineComponent({
             fieldKeys.value.includes(fieldProp) &&
             FORM_ITEM_SLOT_NAMES.includes(formItemSlot)
           ) {
-            currentSlots[fieldProp][
-              `${FORM_ITEM_SLOT_PREFIX}${SLOT_SEP}${formItemSlot}`
-            ] = slots[slotName]!;
+            currentSlots[fieldProp][`${FORM_ITEM_SLOT_PREFIX}${SLOT_SEP}${formItemSlot}`] =
+              slots[slotName]!;
           }
         }
       });
@@ -116,7 +109,7 @@ export const CharrueSchemaForm = defineComponent({
       {
         immediate: true,
         deep: true,
-      }
+      },
     );
 
     watch(
@@ -127,17 +120,13 @@ export const CharrueSchemaForm = defineComponent({
       {
         deep: true,
         immediate: true,
-      }
+      },
     );
 
     const onInput = (key: string, value: any) => {
       formData.value[key] = value;
     };
-    const onValidate = (
-      prop: FormItemProp,
-      isValid: boolean,
-      message: string
-    ) => {
+    const onValidate = (prop: FormItemProp, isValid: boolean, message: string) => {
       emit("validate", prop, isValid, message);
     };
 
@@ -194,11 +183,11 @@ export const CharrueSchemaForm = defineComponent({
               value: this.formData[fieldProp],
               "onUpdate:value": (value: any) => this.onInput(fieldProp, value),
             } as any,
-            this.fieldSlots[fieldProp]
+            this.fieldSlots[fieldProp],
           );
         }),
         this.$slots.extra ? this.$slots.extra() : [],
-      ]
+      ],
     );
   },
 });

@@ -63,8 +63,7 @@ export const CharrueSchemaField = defineComponent({
         if (index === -1) {
           formItemAndFieldSlots.field[name] = slots[name] as Slot;
         } else {
-          formItemAndFieldSlots.formItem[name.slice(index + PREFIX.length)] =
-            slots[name] as Slot;
+          formItemAndFieldSlots.formItem[name.slice(index + PREFIX.length)] = slots[name] as Slot;
         }
       });
 
@@ -86,7 +85,7 @@ export const CharrueSchemaField = defineComponent({
       {
         immediate: true,
         deep: true,
-      }
+      },
     );
 
     const formItemProps = computed<Record<string, any>>(() => {
@@ -110,7 +109,7 @@ export const CharrueSchemaField = defineComponent({
       let tempValue = value;
       if (props.schema.type === "number" && typeof tempValue === "string") {
         tempValue = tempValue.replace(/[^\d^\\.]+/g, "");
-        tempValue = tempValue === "" ? "" : Number(tempValue);
+        tempValue = tempValue === "" ? undefined : Number(tempValue);
       }
       if (props.schema.type === "string" && typeof value === "string") {
         tempValue = props.schema.trim !== false ? value.trim() : value;
@@ -155,7 +154,7 @@ export const CharrueSchemaField = defineComponent({
           key: fieldSchema.prop,
           "onUpdate:modelValue": onInput,
         },
-        computedSlots.field
+        computedSlots.field,
       );
 
     return h(
@@ -166,7 +165,7 @@ export const CharrueSchemaField = defineComponent({
       h(ElFormItem, formItemProps, {
         ...computedSlots.formItem,
         default: () => Field,
-      })
+      }),
     );
   },
 });

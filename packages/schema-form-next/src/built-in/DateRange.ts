@@ -1,5 +1,5 @@
 import { defineComponent, h, PropType, computed } from "vue";
-import { ElDatePicker } from "element-plus";
+import { ElDatePicker, DateModelType } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
 type ElDatePickerProps = InstanceType<typeof ElDatePicker>["$props"];
@@ -9,6 +9,7 @@ export type CharrueDateRangeFieldProps = FieldProps<
 > & {
   type?: "datetimerange" | "daterange" | "monthrange";
 };
+type DateRangeValue = [DateModelType, DateModelType];
 
 const defaultUiProps: CharrueDateRangeFieldProps = {
   clearable: true,
@@ -19,13 +20,11 @@ export const CharrueDateRangeField = defineComponent({
   name: "CharrueDateRangeField",
   props: {
     modelValue: {
-      type: [String, Number] as PropType<string | number | Date>,
-      default: "",
+      type: Array as unknown as PropType<DateRangeValue>,
+      default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueDateRangeFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueDateRangeFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -80,7 +79,7 @@ export const CharrueDateRangeField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });
