@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "pnpm --filter=@charrue/schema-form-next run build",
+    "play": "pnpm --filter=playground dev",
     "docs": "pnpm --filter=docs run dev",
     "lint": "eslint packages/schema-form-next --ext .ts --cache --fix",
     "test": "pnpm --filter=@charrue/schema-form-next test"

@@ -63,8 +63,10 @@ const schema: Record<string, FormSchemaDef> = {
     type: "string",
     uiWidget: "checkbox",
     enums: [
-      { label: "OptionA", value: "a" },
-      { label: "OptionB", value: "b" },
+      { label: "Hide ColorPicker", value: "colorPicker" },
+      { label: "Hide DateRange", value: "dateRange" },
+      { label: "Hide Date", value: "date" },
+      { label: "Hide Input", value: "input" },
     ],
   },
   colorPicker: {
@@ -106,8 +108,10 @@ const schema: Record<string, FormSchemaDef> = {
     type: "string",
     uiWidget: "radio",
     enums: [
-      { label: "OptionA", value: "a" },
-      { label: "OptionB", value: "b" },
+      { label: "OptionA", value: "A" },
+      { label: "OptionB", value: "B" },
+      { label: "OptionC", value: "C" },
+      { label: "OptionD", value: "D" },
     ],
   },
   rate: {
@@ -148,16 +152,29 @@ const schema: Record<string, FormSchemaDef> = {
     uiWidget: "timeSelect",
   },
 };
-const value = ref({ input: "foo" });
+const value = ref<Record<string, any>>({ input: "foo" });
 
 const displayValue = computed(() => {
   return JSON.stringify(value.value, null, 2);
+});
+
+const visibleState = computed(() => {
+  const checkbox: string[] = value.value.checkbox || [];
+
+  return checkbox.reduce((acc, cur) => {
+    acc[cur] = false;
+    return acc;
+  }, {} as unknown as Record<string, boolean>);
 });
 </script>
 
 <template>
   <div class="playground-root">
-    <CharrueSchemaForm v-model="value" :schema="schema"></CharrueSchemaForm>
+    <CharrueSchemaForm
+      v-model="value"
+      :schema="schema"
+      :visible-state="visibleState"
+    ></CharrueSchemaForm>
 
     <pre>{{ displayValue }}</pre>
   </div>
@@ -167,9 +184,19 @@ const displayValue = computed(() => {
 .playground-root {
   padding: 20px;
   box-sizing: border-box;
+  display: flex;
 
-  .charrue-schema-form-container {
+  > pre {
+    position: fixed;
+    top: 20px;
+    right: 100px;
+    background: inherit;
+    z-index: 3;
+  }
+
+  .charrue-schema-form-root {
     width: 500px;
+    --csf-field-width: 260px;
   }
 }
 </style>
