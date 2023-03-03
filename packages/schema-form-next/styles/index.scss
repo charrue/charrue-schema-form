@@ -1,1 +1,32 @@
 @import "./input-number.scss";
+
+.charrue-schema-form-root {
+  .el-cascader {
+    width: var(--csf-field-width, inherit);
+  }
+
+  .el-date-editor.el-input,
+  .el-date-editor.el-input__wrapper {
+    flex-grow: 0;
+    width: var(--csf-field-width, var(--el-date-editor-width));
+  }
+
+  .el-input {
+    width: var(--csf-field-width, 100%);
+  }
+  .el-input-number {
+    width: var(--csf-field-width, 150px);
+  }
+  .el-checkbox-group {
+    width: var(--csf-field-width, inherit);
+  }
+  .el-radio-group {
+    width: var(--csf-field-width, inherit);
+  }
+  .el-select {
+    width: var(--csf-field-width, inherit);
+  }
+  .el-slider {
+    width: var(--csf-field-width, 100%);
+  }
+}

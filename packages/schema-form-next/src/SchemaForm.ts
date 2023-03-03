@@ -156,7 +156,7 @@ export const CharrueSchemaForm = defineComponent({
     return h(
       ElForm,
       {
-        class: "charrue-schema-form-container",
+        class: ["charrue-schema-form-root", `charrue-schema-form-root--${this.size || "default"}`],
         ref: "elFormRef",
         model: this.formData,
         rules: this.computedRules,

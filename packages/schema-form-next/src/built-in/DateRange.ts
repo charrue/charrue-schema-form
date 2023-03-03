@@ -49,7 +49,8 @@ export const CharrueDateRangeField = defineComponent({
       const fieldSchema = props.schema;
 
       return {
-        placeholder: `请选择${props.schema?.label || ""}`,
+        startPlaceholder: "开始日期",
+        endPlaceholder: "结束日期",
         ...defaultUiProps,
         ...(fieldSchema.uiProps || {}),
       };
