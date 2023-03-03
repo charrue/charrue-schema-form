@@ -22,6 +22,10 @@ export const CharrueSchemaField = defineComponent({
       type: [Array, String, Number, Boolean, Object],
       default: undefined,
     },
+    visible: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: {
     "update:value": (value: any) => true,
@@ -161,6 +165,7 @@ export const CharrueSchemaField = defineComponent({
       "div",
       {
         class: "charrue-schema-field-wrapper",
+        style: [this.$attrs.style, { display: this.visible === false ? "none" : "inherit" }],
       },
       h(ElFormItem, formItemProps, {
         ...computedSlots.formItem,

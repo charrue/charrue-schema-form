@@ -35,7 +35,7 @@ export const CharrueInputNumberField = defineComponent({
   emits,
   setup(props, { emit }) {
     const onInput = (value: number | undefined) => {
-      emit("update:modelValue", value || undefined);
+      emit("update:modelValue", typeof value === "number" ? value : undefined);
     };
     const inputProps = computed(() => {
       const fieldSchema = props.schema;

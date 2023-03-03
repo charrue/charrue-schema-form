@@ -1,4 +1,5 @@
 import isequal from "lodash.isequal";
+import { StyleValue } from "vue";
 
 export const has = <T = Record<string, any>>(obj: T, key: string) => {
   if (!obj || !key) return false;

@@ -30,9 +30,7 @@
   "style": "index.css",
   "files": [
     "dist",
-    "index.css",
-    "typings",
-    "README.md"
+    "index.css"
   ],
   "scripts": {
     "build": "tsup -c && npm run build:full && npm run build:style",

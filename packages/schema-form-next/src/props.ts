@@ -19,6 +19,12 @@ export const schemaFormProps = {
     },
     required: true,
   },
+  visibleState: {
+    type: Object as PropType<Record<string, boolean>>,
+    default() {
+      return {};
+    },
+  },
   rules: {
     type: Object as PropType<FormRules>,
     default() {
@@ -75,6 +81,10 @@ export const schemaFormProps = {
   },
   scrollToError: {
     type: Boolean as PropType<ElFormProps["scrollToError"]>,
+    default: false,
+  },
+  clearAfterHide: {
+    type: Boolean,
     default: false,
   },
 };

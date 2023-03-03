@@ -184,6 +184,7 @@ export const CharrueSchemaForm = defineComponent({
               key: `schema-field-${fieldProp}-${index}`,
               schema: this.schema[fieldProp],
               value: this.formData[fieldProp],
+              visible: this.visibleState?.[fieldProp],
               "onUpdate:value": (value: any) => this.onInput(fieldProp, value),
             } as any,
             this.fieldSlots[fieldProp],
