@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { h, ref, watch, defineComponent, computed, Slots } from "vue";
+import { h, ref, shallowRef, watch, defineComponent, computed, Slots } from "vue";
 import { ElForm } from "element-plus";
 import { CharrueSchemaField } from "./SchemaField";
 import { isEqual, has, SLOT_SEP, FORM_ITEM_SLOT_NAMES, FORM_ITEM_SLOT_PREFIX } from "./utils";
@@ -83,7 +83,7 @@ export const CharrueSchemaForm = defineComponent({
       }, {} as unknown as FormRules);
     });
 
-    const formData = ref<SchemaFormData>({});
+    const formData = shallowRef<SchemaFormData>({});
     const defaultValue = computed(() => {
       const { schema } = props;
       return fieldKeys.value.reduce((acc, fieldProp) => {
@@ -124,7 +124,10 @@ export const CharrueSchemaForm = defineComponent({
     );
 
     const onInput = (key: string, value: any) => {
-      formData.value[key] = value;
+      formData.value = {
+        ...formData.value,
+        [key]: value,
+      };
     };
     const onValidate = (prop: FormItemProp, isValid: boolean, message: string) => {
       emit("validate", prop, isValid, message);

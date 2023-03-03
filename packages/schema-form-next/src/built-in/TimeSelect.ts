@@ -20,9 +20,7 @@ export const CharrueTimeSelectField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueTimeSelectFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueTimeSelectFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -69,7 +67,7 @@ export const CharrueTimeSelectField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

@@ -42,14 +42,10 @@ export const getWidgetComponent = (type: string): Component => {
   return CharrueInputField;
 };
 
-export const registerWidget = (
-  name: string,
-  component: Component,
-  override = false
-) => {
+export const registerWidget = (name: string, component: Component, override = false) => {
   if (globalWidget.has(name) && !override) {
     console.warn(
-      `${name} widget has registered, if you want to override it, please set 'override': true in registerWidget.`
+      `${name} widget has registered, if you want to override it, please set 'override': true in registerWidget.`,
     );
   } else {
     globalWidget.set(name, component);

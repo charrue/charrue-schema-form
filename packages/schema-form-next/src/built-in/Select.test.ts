@@ -11,8 +11,7 @@ const mountField = (schema: FormSchemaDef, value?: any) => {
     components: {
       CharrueSelectField,
     },
-    template:
-      "<CharrueSelectField v-model='value' :schema='schema'></CharrueSelectField>",
+    template: "<CharrueSelectField v-model='value' :schema='schema'></CharrueSelectField>",
     data() {
       return {
         value,
@@ -51,7 +50,7 @@ describe("CharrueSelectField", () => {
     const wrapper = mountField(
       createSelectSchema("foo", "Foo", {
         enums: ["A", "B"],
-      })
+      }),
     );
 
     const { componentProps } = findElSelect(wrapper);
@@ -65,7 +64,7 @@ describe("CharrueSelectField", () => {
     const wrapper = mountField(
       createSelectSchema("foo", "Foo", {
         enums: ["A", "B"],
-      })
+      }),
     );
 
     const { componentProps: firstProps } = findElOption(wrapper, 0);
@@ -91,7 +90,7 @@ describe("CharrueSelectField", () => {
           },
         ],
       }),
-      "A"
+      "A",
     );
 
     const { componentProps: firstProps } = findElOption(wrapper, 0);
@@ -111,7 +110,7 @@ describe("CharrueSelectField", () => {
           multiple: true,
           filterable: false,
         },
-      })
+      }),
     );
 
     const { componentProps } = findElSelect(wrapper);
@@ -124,7 +123,7 @@ describe("CharrueSelectField", () => {
       createSelectSchema("foo", "Foo", {
         enums: ["A", "B"],
       }),
-      "A"
+      "A",
     );
 
     const { componentWrapper: optionWrapper } = findElOption(wrapper, 1);

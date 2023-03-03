@@ -3,22 +3,15 @@ import { describe, test, expect } from "vitest";
 import { CharrueInputNumberField } from "./InputNumber";
 import { createInputNumberSchema } from "../helper";
 import type { CharrueInputNumberFieldProps } from "./InputNumber";
-import type {
-  FormSchemaDef,
-  DefaultListOptionValue,
-  ListOptionItem,
-} from "../types/public";
+import type { FormSchemaDef, DefaultListOptionValue, ListOptionItem } from "../types/public";
 import { ElInputNumber } from "element-plus";
 
 const mountField = (
   schema: Omit<
-    FormSchemaDef<
-      CharrueInputNumberFieldProps,
-      ListOptionItem<DefaultListOptionValue>
-    >,
+    FormSchemaDef<CharrueInputNumberFieldProps, ListOptionItem<DefaultListOptionValue>>,
     "enums"
   >,
-  value?: any
+  value?: any,
 ) => {
   return mount({
     components: {
@@ -65,7 +58,7 @@ describe("CharrueInputNumberField", () => {
         uiProps: {
           size: "large",
         },
-      })
+      }),
     );
     const { componentProps } = findElInputNumber(wrapper);
     expect(componentProps.size).toBe("large");

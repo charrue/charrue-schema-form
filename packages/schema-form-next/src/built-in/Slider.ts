@@ -23,9 +23,7 @@ export const CharrueSliderField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueSliderFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueSliderFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -71,7 +69,7 @@ export const CharrueSliderField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

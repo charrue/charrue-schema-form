@@ -1,4 +1,4 @@
-import { ref, watch } from "vue";
+import { shallowRef, watch } from "vue";
 import { ListOptionItem, ListOption, FormSchemaDef } from "../types/public";
 import { isFunction, isPromise } from "../utils";
 
@@ -21,7 +21,7 @@ const formatEnumValue = (rawValue?: ListOption): ListOptionItem[] => {
 };
 
 export const useEnums = (enums: FormSchemaDef["enums"]) => {
-  const list = ref<ListOptionItem[]>([]);
+  const list = shallowRef<ListOptionItem[]>([]);
 
   watch(
     () => enums,
@@ -39,7 +39,7 @@ export const useEnums = (enums: FormSchemaDef["enums"]) => {
     {
       deep: true,
       immediate: true,
-    }
+    },
   );
 
   return list;

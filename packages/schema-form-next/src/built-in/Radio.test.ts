@@ -9,14 +9,13 @@ import type { FormSchemaDef } from "../types/public";
 
 const mountField = (
   schema: FormSchemaDef<CharrueRadioFieldProps, RadioListOptionItem>,
-  value?: any
+  value?: any,
 ) => {
   return mount({
     components: {
       CharrueRadioField,
     },
-    template:
-      "<CharrueRadioField v-model='value' :schema='schema'></CharrueRadioField>",
+    template: "<CharrueRadioField v-model='value' :schema='schema'></CharrueRadioField>",
     data() {
       return {
         value,
@@ -36,9 +35,7 @@ const findElRadioGroup = (wrapper: VueWrapper) => {
   };
 };
 const findElRadio = (wrapper: VueWrapper, index = 0, isButton = false) => {
-  const componentWrapper = wrapper
-    .findAllComponents(isButton ? ElRadioButton : ElRadio)
-    .at(index)!;
+  const componentWrapper = wrapper.findAllComponents(isButton ? ElRadioButton : ElRadio).at(index)!;
   const componentProps = componentWrapper.props();
   const innerText = componentWrapper.text();
 
@@ -61,16 +58,14 @@ describe("CharrueRadioField", () => {
     const wrapper = mountField(
       createRadioSchema("foo", "Foo", {
         enums: ["A", "B"],
-      })
+      }),
     );
 
-    const { componentProps: firstProps, innerText: firstInnerText } =
-      findElRadio(wrapper, 0);
+    const { componentProps: firstProps, innerText: firstInnerText } = findElRadio(wrapper, 0);
     expect(firstProps.label).toBe("A");
     expect(firstInnerText).toBe("A");
 
-    const { componentProps: secondProps, innerText: secondInnerText } =
-      findElRadio(wrapper, 1);
+    const { componentProps: secondProps, innerText: secondInnerText } = findElRadio(wrapper, 1);
     expect(secondProps.label).toBe("B");
     expect(secondInnerText).toBe("B");
   });
@@ -88,16 +83,14 @@ describe("CharrueRadioField", () => {
             value: "2",
           },
         ],
-      })
+      }),
     );
 
-    const { componentProps: firstProps, innerText: firstInnerText } =
-      findElRadio(wrapper, 0);
+    const { componentProps: firstProps, innerText: firstInnerText } = findElRadio(wrapper, 0);
     expect(firstProps.label).toBe(1);
     expect(firstInnerText).toBe("A");
 
-    const { componentProps: secondProps, innerText: secondInnerText } =
-      findElRadio(wrapper, 1);
+    const { componentProps: secondProps, innerText: secondInnerText } = findElRadio(wrapper, 1);
     expect(secondProps.label).toBe("2");
     expect(secondInnerText).toBe("B");
   });
@@ -115,7 +108,7 @@ describe("CharrueRadioField", () => {
             border: true,
           },
         },
-      })
+      }),
     );
 
     expect(findElRadioGroup(wrapper).componentProps.size).toBe("large");
@@ -140,7 +133,7 @@ describe("CharrueRadioField", () => {
             };
           },
         },
-      })
+      }),
     );
 
     const { componentProps: firstProps } = findElRadio(wrapper, 0);
@@ -156,7 +149,7 @@ describe("CharrueRadioField", () => {
     const wrapper = mountField(
       createRadioSchema("foo", "Foo", {
         enums: ["A", "B"],
-      })
+      }),
     );
 
     const { componentWrapper: optionWrapper } = findElRadio(wrapper, 1);

@@ -23,9 +23,7 @@ export const CharrueDateField = defineComponent({
       default: "",
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueDateFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueDateFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -80,7 +78,7 @@ export const CharrueDateField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

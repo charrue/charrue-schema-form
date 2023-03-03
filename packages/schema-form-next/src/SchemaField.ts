@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { h, defineComponent, PropType, ref, computed, watch, Slot } from "vue";
+import { h, defineComponent, PropType, shallowRef, computed, watch, Slot } from "vue";
 import { ElFormItem } from "element-plus";
 import { FormSchemaDef } from "./types/public";
 import { FORM_ITEM_SLOT_PREFIX, isEqual, SLOT_SEP } from "./utils";
@@ -27,7 +27,7 @@ export const CharrueSchemaField = defineComponent({
     "update:value": (value: any) => true,
   },
   setup(props, { emit, slots }) {
-    const currentValue = ref<any>(undefined);
+    const currentValue = shallowRef<any>(undefined);
     const fieldSchema = computed(() => {
       const {
         type = "string",

@@ -3,9 +3,7 @@ import { ElInput, InputProps, InputEmits } from "element-plus";
 import type { FormSchemaDef, FieldProps } from "../types/public";
 
 type ElInputProps = Partial<InputProps>;
-export type CharrueInputFieldProps = FieldProps<
-  Omit<ElInputProps, "modelValue">
->;
+export type CharrueInputFieldProps = FieldProps<Omit<ElInputProps, "modelValue">>;
 
 const defaultUiProps: CharrueInputFieldProps = {
   clearable: true,
@@ -33,9 +31,7 @@ export const CharrueInputField = defineComponent({
       default: "",
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueInputFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueInputFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -81,7 +77,7 @@ export const CharrueInputField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

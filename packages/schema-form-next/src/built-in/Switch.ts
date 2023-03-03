@@ -23,9 +23,7 @@ export const CharrueSwitchField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueSwitchFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueSwitchFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -71,7 +69,7 @@ export const CharrueSwitchField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });

@@ -1,16 +1,10 @@
 import { h, defineComponent, PropType, computed } from "vue";
 import { ElSelect, ElOption, ElOptionGroup } from "element-plus";
 import { useEnums } from "./useEnums";
-import type {
-  ListOptionItem,
-  FormSchemaDef,
-  FieldProps,
-} from "../types/public";
+import type { ListOptionItem, FormSchemaDef, FieldProps } from "../types/public";
 
 type ElSelectProps = InstanceType<typeof ElSelect>["$props"];
-export type CharrueSelectFieldProps = FieldProps<
-  Omit<ElSelectProps, "modelValue">
->;
+export type CharrueSelectFieldProps = FieldProps<Omit<ElSelectProps, "modelValue">>;
 
 const defaultUiProps = {
   clearable: true,
@@ -31,15 +25,7 @@ export const CharrueSelectField = defineComponent({
       required: true,
     },
   },
-  emits: [
-    "update:modelValue",
-    "change",
-    "remove-tag",
-    "clear",
-    "visible-change",
-    "focus",
-    "blur",
-  ],
+  emits: ["update:modelValue", "change", "remove-tag", "clear", "visible-change", "focus", "blur"],
   setup(props, { emit }) {
     const options = useEnums(props.schema.enums);
     const onInput = (val: ListOptionItem["value"]) => {
@@ -50,11 +36,7 @@ export const CharrueSelectField = defineComponent({
       const fieldSchema = props.schema;
       if (!fieldSchema) return {};
 
-      const {
-        "remote-method": rm,
-        remoteMethod,
-        ...rest
-      } = fieldSchema.uiProps || {};
+      const { "remote-method": rm, remoteMethod, ...rest } = fieldSchema.uiProps || {};
 
       const originRemoteMethod = rm || remoteMethod;
 
@@ -123,8 +105,8 @@ export const CharrueSelectField = defineComponent({
                       label: t.label,
                       value: t.value,
                       key: `nested-option-item-${idx}-${t.value}`,
-                    })
-                  )
+                    }),
+                  ),
               );
             }
 
@@ -134,7 +116,7 @@ export const CharrueSelectField = defineComponent({
               key: `option-item-${index}-${item.value}`,
             });
           }),
-      }
+      },
     );
   },
 });

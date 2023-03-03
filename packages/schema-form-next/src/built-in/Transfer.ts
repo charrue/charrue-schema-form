@@ -10,26 +10,14 @@ import type { FormSchemaDef, FieldProps } from "../types/public";
 
 type ElTransferProps = Partial<TransferProps>;
 
-export type CharrueTransferFieldProps = FieldProps<
-  Omit<ElTransferProps, "modelValue">
->;
+export type CharrueTransferFieldProps = FieldProps<Omit<ElTransferProps, "modelValue">>;
 
 const defaultUiProps: CharrueTransferFieldProps = {};
 const emits: TransferEmits = {
-  change: (
-    value: TransferKey[],
-    direction: TransferDirection,
-    movedKeys: TransferKey[]
-  ) => true,
+  change: (value: TransferKey[], direction: TransferDirection, movedKeys: TransferKey[]) => true,
   "update:modelValue": (value: TransferKey[]) => true,
-  "left-check-change": (
-    value: TransferKey[],
-    movedKeys?: TransferKey[] | undefined
-  ) => true,
-  "right-check-change": (
-    value: TransferKey[],
-    movedKeys?: TransferKey[] | undefined
-  ) => true,
+  "left-check-change": (value: TransferKey[], movedKeys?: TransferKey[] | undefined) => true,
+  "right-check-change": (value: TransferKey[], movedKeys?: TransferKey[] | undefined) => true,
 };
 
 export const CharrueTransferField = defineComponent({
@@ -40,9 +28,7 @@ export const CharrueTransferField = defineComponent({
       default: undefined,
     },
     schema: {
-      type: Object as PropType<
-        Omit<FormSchemaDef<CharrueTransferFieldProps>, "enums">
-      >,
+      type: Object as PropType<Omit<FormSchemaDef<CharrueTransferFieldProps>, "enums">>,
       default() {
         return {};
       },
@@ -87,7 +73,7 @@ export const CharrueTransferField = defineComponent({
         modelValue,
         "onUpdate:modelValue": onInput,
       },
-      $slots
+      $slots,
     );
   },
 });
