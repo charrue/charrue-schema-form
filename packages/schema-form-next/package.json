@@ -33,7 +33,7 @@
     "index.css"
   ],
   "scripts": {
-    "build": "tsup -c && npm run build:full && npm run build:style",
+    "build": "tsup && npm run build:full && npm run build:style",
     "dev": "tsup src/index.ts --no-config --watch --dts --format esm,cjs --splitting",
     "build:full": "rollup -c",
     "build:style": "gulp --gulpfile gulpfile.js default",
