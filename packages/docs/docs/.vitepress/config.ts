@@ -8,15 +8,11 @@ const sidebar: DefaultTheme.Config["sidebar"] = [
     items: [
       {
         text: "开始使用",
-        link: "/guide/",
+        link: "/guide",
       },
       {
-        text: "组件",
-        link: "/field/"
-      },
-      {
-        text: "插槽",
-        link: "/slots/"
+        text: "内置组件",
+        link: "/field"
       },
     ]
   },

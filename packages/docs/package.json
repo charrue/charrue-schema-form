@@ -25,14 +25,14 @@
   },
   "devDependencies": {
     "@charrue/schema-form-next": "workspace:*",
-    "@ruabick/md-demo-plugins": "latest",
-    "@ruabick/vitepress-demo-block": "latest",
+    "@ruabick/md-demo-plugins": "^0.3.1",
+    "@ruabick/vitepress-demo-block": "^0.3.1",
     "@vitejs/plugin-vue": "^4.0.0",
     "cross-env": "^7.0.3",
     "gh-pages": "^4.0.0",
-    "np": "^7.6.2",
-    "vite": "^4.0.3",
-    "vite-plugin-dts": "^1.4.0",
-    "vitepress": "latest"
+    "np": "^7.6.3",
+    "vite": "^4.1.4",
+    "vite-plugin-dts": "^1.7.3",
+    "vitepress": "1.0.0-alpha.49"
   }
 }

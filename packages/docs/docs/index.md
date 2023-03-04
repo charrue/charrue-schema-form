@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /guide/
+      link: /guide
 
 features:
   - title: 易于扩展的
