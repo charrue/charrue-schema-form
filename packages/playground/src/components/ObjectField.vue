@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, computed, watch, PropType } from "vue";
-import { FormSchemaDef, CharrueSchemaField } from "@charrue/schema-form-next";
+import { FormSchemaDef, CharrueSchemaField, VisibleStateProp } from "@charrue/schema-form-next";
 
 interface UiProps {
   label: string;
@@ -15,6 +15,10 @@ const props = defineProps({
   schema: {
     type: Object as PropType<FormSchemaDef<UiProps>>,
     required: true,
+  },
+  visible: {
+    type: Object as PropType<VisibleStateProp[string]>,
+    default: () => ({}),
   },
 });
 
@@ -42,7 +46,11 @@ watch(
     <div class="object-field-label">{{ label }}</div>
 
     <div v-for="(item, index) in fields" :key="index" class="array-field-item">
-      <CharrueSchemaField v-model="formData[item.prop!]" :schema="item"></CharrueSchemaField>
+      <CharrueSchemaField
+        v-model="formData[item.prop!]"
+        :schema="item"
+        :visible="typeof visible === 'boolean' ? visible : visible[item.prop!]"
+      ></CharrueSchemaField>
     </div>
   </div>
 </template>

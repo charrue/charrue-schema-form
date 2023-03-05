@@ -6,10 +6,11 @@ import ObjectField from "../components/ObjectField.vue";
 registerWidget("ObjectField", ObjectField);
 
 const schema: Record<string, FormSchemaDef> = {
-  foo: {
-    prop: "foo",
-    label: "Foo",
-    type: "string",
+  hideObjA: {
+    prop: "hideObjA",
+    label: "Hide ObjA",
+    type: "boolean",
+    uiWidget: "switch",
   },
   obj: {
     prop: "obj",
@@ -34,15 +35,29 @@ const schema: Record<string, FormSchemaDef> = {
   },
 };
 
-const formData = ref<Record<string, string>>({});
+const formData = ref<Record<string, any>>({
+  hideObjA: false,
+});
 const displayValue = computed(() => {
   return JSON.stringify(formData.value, null, 2);
+});
+
+const visibleState = computed(() => {
+  return {
+    obj: {
+      objA: !formData.value.hideObjA,
+    },
+  };
 });
 </script>
 
 <template>
   <div>
-    <CharrueSchemaForm v-model="formData" :schema="schema"></CharrueSchemaForm>
+    <CharrueSchemaForm
+      v-model="formData"
+      :schema="schema"
+      :visible-state="visibleState"
+    ></CharrueSchemaForm>
 
     <pre>{{ displayValue }}</pre>
   </div>
