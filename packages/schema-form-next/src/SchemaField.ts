@@ -1,6 +1,6 @@
 import { h, defineComponent, PropType, shallowRef, computed, watch, Slot } from "vue";
 import { ElFormItem } from "element-plus";
-import { FormSchemaDef } from "./types";
+import { FormSchemaDef, VisibleStateProp } from "./types";
 import { FORM_ITEM_SLOT_PREFIX, isEqual, SLOT_SEP } from "./utils";
 import { getWidgetComponent } from "./widget-manager";
 
@@ -22,7 +22,7 @@ export const CharrueSchemaField = defineComponent({
       default: undefined,
     },
     visible: {
-      type: Boolean,
+      type: [Boolean, Object] as PropType<VisibleStateProp[string]>,
       default: true,
     },
   },
@@ -154,6 +154,7 @@ export const CharrueSchemaField = defineComponent({
           modelValue: currentValue,
           schema: fieldSchema,
           class: "charrue-schema-field-item",
+          visible: this.visible,
           key: fieldSchema.prop,
           "onUpdate:modelValue": onInput,
         },

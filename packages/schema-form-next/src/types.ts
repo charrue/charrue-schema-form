@@ -79,3 +79,8 @@ export type CreateSchemaTemplateType<
 ) => FormSchemaDef<UiProps, OptionItem>;
 
 export type FieldProps<T> = T & Record<string, any>;
+
+export type VisibleStateProp = Record<
+  string,
+  boolean | Record<string, boolean | Record<string, boolean>>
+>;

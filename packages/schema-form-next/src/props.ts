@@ -1,7 +1,7 @@
 import { ExtractPropTypes, PropType } from "vue";
 import { ElForm } from "element-plus";
 import type { FormRules } from "element-plus";
-import type { FormSchemaDef } from "./types";
+import type { FormSchemaDef, VisibleStateProp } from "./types";
 
 type ElFormProps = InstanceType<typeof ElForm>["$props"];
 
@@ -20,7 +20,7 @@ export const schemaFormProps = {
     required: true,
   },
   visibleState: {
-    type: Object as PropType<Record<string, boolean>>,
+    type: Object as PropType<VisibleStateProp>,
     default() {
       return {};
     },

@@ -172,7 +172,7 @@ export const createSwitchSchema: CreateSchemaTemplateType<CharrueSwitchFieldProp
     ...(config || {}),
     title: label,
     prop,
-    type: "string",
+    type: "boolean",
     uiWidget: "switch",
     uiProps,
   };
