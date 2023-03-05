@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "element-plus": "^2.2.18",
-    "vue": "^3.2.41"
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@unocss/reset": "^0.50.3",
