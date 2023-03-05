@@ -15,7 +15,7 @@ import { CharrueCascaderField } from "./built-in/Cascader";
 import { CharrueTransferField } from "./built-in/Transfer";
 import { CharrueColorPickerField } from "./built-in/ColorPicker";
 
-import type { FieldWidget } from "./types/public";
+import type { FieldWidget } from "./types";
 
 const globalWidget = new Map<FieldWidget | string, Component>();
 globalWidget.set("input", CharrueInputField);

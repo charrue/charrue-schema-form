@@ -17,5 +17,5 @@ const plugin = {
 export default plugin;
 export { CharrueSchemaForm, CharrueSchemaField, registerWidget };
 export * from "./helper";
-export * from "./types/public";
+export * from "./types";
 export type { SchemaFormProps } from "./props";

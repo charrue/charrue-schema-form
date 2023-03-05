@@ -25,7 +25,7 @@ describe("SchemaField", () => {
         createSchemaFieldDemo({
           schema,
           value: "",
-        })
+        }),
       );
 
       const FormItem = wrapper.findComponent(ElFormItem);
@@ -49,7 +49,7 @@ describe("SchemaField", () => {
         createSchemaFieldDemo({
           schema,
           value,
-        })
+        }),
       );
 
       const FieldWrapper = wrapper.findComponent(ElInput);

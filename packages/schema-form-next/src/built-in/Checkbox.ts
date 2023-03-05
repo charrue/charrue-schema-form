@@ -9,7 +9,7 @@ import {
 } from "element-plus";
 import { useEnums } from "./useEnums";
 import type { CheckboxValueType } from "element-plus";
-import type { ListOptionItem, FormSchemaDef, FieldProps } from "../types/public";
+import type { ListOptionItem, FormSchemaDef, FieldProps } from "../types";
 
 type ElCheckboxGroupProps = Partial<CheckboxGroupProps>;
 type ElCheckboxProps = Partial<CheckboxProps>;

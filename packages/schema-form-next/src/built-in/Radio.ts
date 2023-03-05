@@ -8,7 +8,7 @@ import {
   RadioGroupEmits,
 } from "element-plus";
 import { useEnums } from "./useEnums";
-import type { FormSchemaDef, ListOptionItem, FieldProps } from "../types/public";
+import type { FormSchemaDef, ListOptionItem, FieldProps } from "../types";
 
 type ElRadioGroupProps = Partial<RadioGroupProps>;
 type ElRadioProps = Partial<RadioProps>;

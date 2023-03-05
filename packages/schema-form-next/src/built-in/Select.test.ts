@@ -4,7 +4,7 @@ import { CharrueSelectField } from "./Select";
 import { createSelectSchema } from "../helper";
 import { ElSelect, ElOption } from "element-plus";
 import { nextTick } from "vue";
-import type { FormSchemaDef } from "../types/public";
+import type { FormSchemaDef } from "../types";
 
 const mountField = (schema: FormSchemaDef, value?: any) => {
   return mount({

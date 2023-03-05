@@ -5,7 +5,7 @@ import type {
   DefaultListOptionValue,
   DefaultFormSchemaExcludeKey,
   FormSchemaDef,
-} from "./types/public";
+} from "./types";
 import type { CharrueCheckboxFieldProps, CheckboxOptionItem } from "./built-in/Checkbox";
 import type { CharrueRadioFieldProps, RadioListOptionItem } from "./built-in/Radio";
 import type { CharrueInputFieldProps } from "./built-in/Input";

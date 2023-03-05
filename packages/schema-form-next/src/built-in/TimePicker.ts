@@ -1,7 +1,7 @@
 import { defineComponent, h, PropType, computed } from "vue";
 import { ElTimePicker } from "element-plus";
 import type { ModelValueType } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 type ElTimePickerProps = InstanceType<typeof ElTimePicker>["$props"];
 

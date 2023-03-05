@@ -5,7 +5,7 @@ import { createRadioSchema } from "../helper";
 import { ElRadioGroup, ElRadio, ElRadioButton } from "element-plus";
 import { nextTick } from "vue";
 import type { CharrueRadioFieldProps, RadioListOptionItem } from "./Radio";
-import type { FormSchemaDef } from "../types/public";
+import type { FormSchemaDef } from "../types";
 
 const mountField = (
   schema: FormSchemaDef<CharrueRadioFieldProps, RadioListOptionItem>,

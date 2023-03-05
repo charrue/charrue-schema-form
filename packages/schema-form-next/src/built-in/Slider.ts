@@ -1,6 +1,6 @@
 import { defineComponent, h, PropType, computed } from "vue";
 import { ElSlider, SliderProps, SliderEmits } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 type ElSliderProps = Partial<SliderProps>;
 

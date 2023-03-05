@@ -9,7 +9,15 @@ type Awaitable<T> = T | PromiseLike<T> | ((...args: any[]) => T);
 
 export type ListOption = string[] | ListOptionItem[];
 
-export type FieldType = "string" | "number" | "array" | "select";
+export type FieldType =
+  | "string"
+  | "number"
+  | "array"
+  | "boolean"
+  | "object"
+  | "array"
+  | "date"
+  | "custom";
 
 export type FieldWidget =
   | "input"
@@ -55,6 +63,7 @@ export interface FormSchemaDef<
   uiWidget?: FieldWidget;
   trim?: boolean;
   formProps?: Record<string, any>;
+  unpack?: boolean;
 }
 
 export type DefaultFormSchemaExcludeKey = "title" | "prop" | "type";

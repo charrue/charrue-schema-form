@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, PropType } from "vue";
 import { ElInputNumber, InputNumberProps, InputNumberEmits } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 type ElInputNumberProps = Partial<InputNumberProps>;
 

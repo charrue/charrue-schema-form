@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { h, defineComponent, PropType, shallowRef, computed, watch, Slot } from "vue";
 import { ElFormItem } from "element-plus";
-import { FormSchemaDef } from "./types/public";
+import { FormSchemaDef } from "./types";
 import { FORM_ITEM_SLOT_PREFIX, isEqual, SLOT_SEP } from "./utils";
 import { getWidgetComponent } from "./widget-manager";
 
@@ -18,7 +17,7 @@ export const CharrueSchemaField = defineComponent({
       },
       required: true,
     },
-    value: {
+    modelValue: {
       type: [Array, String, Number, Boolean, Object],
       default: undefined,
     },
@@ -28,7 +27,7 @@ export const CharrueSchemaField = defineComponent({
     },
   },
   emits: {
-    "update:value": (value: any) => true,
+    "update:modelValue": (value: any) => true,
   },
   setup(props, { emit, slots }) {
     const currentValue = shallowRef<any>(undefined);
@@ -75,7 +74,7 @@ export const CharrueSchemaField = defineComponent({
     });
 
     watch(
-      () => props.value,
+      () => props.modelValue,
       (value) => {
         let tempValue = value !== undefined ? value : fieldSchema.value.default;
         if (fieldSchema.value.type === "array" && !tempValue) {
@@ -120,7 +119,7 @@ export const CharrueSchemaField = defineComponent({
       }
 
       currentValue.value = tempValue;
-      emit("update:value", currentValue.value);
+      emit("update:modelValue", currentValue.value);
     };
 
     return {

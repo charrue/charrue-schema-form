@@ -1,6 +1,6 @@
 import { defineComponent, h, PropType, computed } from "vue";
 import { ElColorPicker, ColorPickerProps, ColorPickerEmits } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 export type CharrueColorPickerFieldProps = FieldProps<
   Omit<Partial<ColorPickerProps>, "modelValue" | "onUpdate:modelValue">

@@ -1,6 +1,6 @@
 import { defineComponent, h, PropType, computed } from "vue";
 import { ElInput, InputProps, InputEmits } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 type ElInputProps = Partial<InputProps>;
 export type CharrueInputFieldProps = FieldProps<Omit<ElInputProps, "modelValue">>;

@@ -1,5 +1,5 @@
 import { shallowRef, watch } from "vue";
-import { ListOptionItem, ListOption, FormSchemaDef } from "../types/public";
+import { ListOptionItem, ListOption, FormSchemaDef } from "../types";
 import { isFunction, isPromise } from "../utils";
 
 const formatEnumValue = (rawValue?: ListOption): ListOptionItem[] => {

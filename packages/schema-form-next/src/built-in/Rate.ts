@@ -1,6 +1,6 @@
 import { defineComponent, h, PropType, computed } from "vue";
 import { ElRate, RateProps } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 type ElRateProps = Partial<RateProps>;
 

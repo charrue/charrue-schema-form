@@ -2,7 +2,14 @@
 import { h, ref, shallowRef, watch, defineComponent, computed, Slots } from "vue";
 import { ElForm } from "element-plus";
 import { CharrueSchemaField } from "./SchemaField";
-import { isEqual, has, SLOT_SEP, FORM_ITEM_SLOT_NAMES, FORM_ITEM_SLOT_PREFIX } from "./utils";
+import {
+  isEqual,
+  has,
+  SLOT_SEP,
+  FORM_ITEM_SLOT_NAMES,
+  FORM_ITEM_SLOT_PREFIX,
+  isPlainObject,
+} from "./utils";
 import type { FormRules, FormItemProp } from "element-plus";
 import { schemaFormProps } from "./props";
 
@@ -124,9 +131,15 @@ export const CharrueSchemaForm = defineComponent({
     );
 
     const onInput = (key: string, value: any) => {
+      const newValue =
+        props.schema?.[key]?.unpack && isPlainObject(value)
+          ? value
+          : {
+              [key]: value,
+            };
       formData.value = {
         ...formData.value,
-        [key]: value,
+        ...newValue,
       };
     };
     const onValidate = (prop: FormItemProp, isValid: boolean, message: string) => {
@@ -183,9 +196,9 @@ export const CharrueSchemaForm = defineComponent({
             {
               key: `schema-field-${fieldProp}-${index}`,
               schema: this.schema[fieldProp],
-              value: this.formData[fieldProp],
+              modelValue: this.formData[fieldProp],
               visible: this.visibleState?.[fieldProp],
-              "onUpdate:value": (value: any) => this.onInput(fieldProp, value),
+              "onUpdate:modelValue": (value: any) => this.onInput(fieldProp, value),
             } as any,
             this.fieldSlots[fieldProp],
           );

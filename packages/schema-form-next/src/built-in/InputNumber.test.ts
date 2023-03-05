@@ -3,7 +3,7 @@ import { describe, test, expect } from "vitest";
 import { CharrueInputNumberField } from "./InputNumber";
 import { createInputNumberSchema } from "../helper";
 import type { CharrueInputNumberFieldProps } from "./InputNumber";
-import type { FormSchemaDef, DefaultListOptionValue, ListOptionItem } from "../types/public";
+import type { FormSchemaDef, DefaultListOptionValue, ListOptionItem } from "../types";
 import { ElInputNumber } from "element-plus";
 
 const mountField = (

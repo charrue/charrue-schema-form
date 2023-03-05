@@ -1,5 +1,4 @@
 import isequal from "lodash.isequal";
-import { StyleValue } from "vue";
 
 export const has = <T = Record<string, any>>(obj: T, key: string) => {
   if (!obj || !key) return false;
@@ -15,3 +14,6 @@ export const FORM_ITEM_SLOT_PREFIX = "formItem";
 export const SLOT_SEP = ":";
 export const isFunction = (fn: any) => typeof fn === "function";
 export const isPromise = (fn: any) => fn instanceof Promise;
+export const isPlainObject = (obj: any) =>
+  Object.prototype.toString.call(obj) === "[object Object]";
+export const isArr = (arr: any) => Array.isArray(arr);

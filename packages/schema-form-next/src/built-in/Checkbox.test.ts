@@ -5,18 +5,17 @@ import { createCheckboxSchema } from "../helper";
 import { ElCheckboxGroup, ElCheckbox, ElCheckboxButton } from "element-plus";
 import { nextTick } from "vue";
 import type { CharrueCheckboxFieldProps, CheckboxOptionItem } from "./Checkbox";
-import type { FormSchemaDef } from "../types/public";
+import type { FormSchemaDef } from "../types";
 
 const mountField = (
   schema: FormSchemaDef<CharrueCheckboxFieldProps, CheckboxOptionItem>,
-  value: any = []
+  value: any = [],
 ) => {
   return mount({
     components: {
       CharrueCheckboxField,
     },
-    template:
-      "<CharrueCheckboxField v-model='value' :schema='schema'></CharrueCheckboxField>",
+    template: "<CharrueCheckboxField v-model='value' :schema='schema'></CharrueCheckboxField>",
     data() {
       return {
         value,
@@ -61,16 +60,14 @@ describe("CharrueCheckboxField", () => {
     const wrapper = mountField(
       createCheckboxSchema("foo", "Foo", {
         enums: ["A", "B"],
-      })
+      }),
     );
 
-    const { componentProps: firstProps, innerText: firstInnerText } =
-      findElCheckbox(wrapper, 0);
+    const { componentProps: firstProps, innerText: firstInnerText } = findElCheckbox(wrapper, 0);
     expect(firstProps.label).toBe("A");
     expect(firstInnerText).toBe("A");
 
-    const { componentProps: secondProps, innerText: secondInnerText } =
-      findElCheckbox(wrapper, 1);
+    const { componentProps: secondProps, innerText: secondInnerText } = findElCheckbox(wrapper, 1);
     expect(secondProps.label).toBe("B");
     expect(secondInnerText).toBe("B");
   });
@@ -88,16 +85,14 @@ describe("CharrueCheckboxField", () => {
             value: "2",
           },
         ],
-      })
+      }),
     );
 
-    const { componentProps: firstProps, innerText: firstInnerText } =
-      findElCheckbox(wrapper, 0);
+    const { componentProps: firstProps, innerText: firstInnerText } = findElCheckbox(wrapper, 0);
     expect(firstProps.label).toBe(1);
     expect(firstInnerText).toBe("A");
 
-    const { componentProps: secondProps, innerText: secondInnerText } =
-      findElCheckbox(wrapper, 1);
+    const { componentProps: secondProps, innerText: secondInnerText } = findElCheckbox(wrapper, 1);
     expect(secondProps.label).toBe("2");
     expect(secondInnerText).toBe("B");
   });
@@ -115,7 +110,7 @@ describe("CharrueCheckboxField", () => {
             border: true,
           },
         },
-      })
+      }),
     );
 
     expect(findElCheckboxGroup(wrapper).componentProps.size).toBe("large");
@@ -140,7 +135,7 @@ describe("CharrueCheckboxField", () => {
             };
           },
         },
-      })
+      }),
     );
 
     const { componentProps: firstProps } = findElCheckbox(wrapper, 0);
@@ -156,7 +151,7 @@ describe("CharrueCheckboxField", () => {
     const wrapper = mountField(
       createCheckboxSchema("foo", "Foo", {
         enums: ["A", "B"],
-      })
+      }),
     );
 
     const { componentWrapper: optionWrapper } = findElCheckbox(wrapper, 1);

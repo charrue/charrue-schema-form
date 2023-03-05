@@ -6,7 +6,7 @@ import {
   TransferDirection,
   TransferKey,
 } from "element-plus";
-import type { FormSchemaDef, FieldProps } from "../types/public";
+import type { FormSchemaDef, FieldProps } from "../types";
 
 type ElTransferProps = Partial<TransferProps>;
 

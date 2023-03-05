@@ -1,7 +1,7 @@
 import { ExtractPropTypes, PropType } from "vue";
 import { ElForm } from "element-plus";
 import type { FormRules } from "element-plus";
-import type { FormSchemaDef } from "./types/public";
+import type { FormSchemaDef } from "./types";
 
 type ElFormProps = InstanceType<typeof ElForm>["$props"];
 
